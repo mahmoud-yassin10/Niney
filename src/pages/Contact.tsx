@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -38,7 +39,7 @@ export default function Contact() {
         />
 
         <div className="max-w-5xl mx-auto pb-20">
-          <div className="grid md:grid-cols-2 gap-12">
+          <Reveal variant="stagger" className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
@@ -190,7 +191,7 @@ export default function Contact() {
                 </Button>
               </form>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </Layout>

@@ -1,8 +1,10 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { SectionTitle } from "@/components/shared/SectionTitle";
+import { Reveal } from "@/components/shared/Reveal";
+import { ImageWithSkeleton } from "@/components/shared/ImageWithSkeleton";
 import { Button } from "@/components/ui/button";
-import { Download, Linkedin, Instagram, Calendar, Mail, ArrowRight } from "lucide-react";
+import { Download, Linkedin, Instagram, Calendar, Mail } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 import nineyImage from "@/assets/niney-1.jpeg";
 import nineyImage2 from "@/assets/niney-4.jpeg";
@@ -37,16 +39,15 @@ export default function MediaKit() {
 
         {/* Quick Bio Section */}
         <section className="max-w-4xl mx-auto pb-16">
-          <div className="grid md:grid-cols-3 gap-8">
+          <Reveal variant="stagger" className="grid md:grid-cols-3 gap-8">
             {/* Photo */}
             <div className="md:col-span-1">
-              <div className="aspect-[3/4] rounded-xl overflow-hidden card-bordered">
-                <img
-                  src={nineyImage}
-                  alt="Niney Yassin - Professional Headshot"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImageWithSkeleton
+                src={nineyImage}
+                alt="Niney Yassin - Professional Headshot"
+                className="aspect-[3/4] rounded-xl card-bordered"
+                imgClassName="object-cover"
+              />
             </div>
 
             {/* Bio */}
@@ -108,26 +109,23 @@ export default function MediaKit() {
                 </Button>
               </div>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         {/* Headshots Section */}
         <section className="pb-16">
           <SectionTitle title="Press Photos" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <Reveal variant="stagger" className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[nineyImage, nineyImage2].map((img, idx) => (
-              <div
+              <ImageWithSkeleton
                 key={idx}
-                className="aspect-[3/4] rounded-xl overflow-hidden card-bordered hover-glow transition-all"
-              >
-                <img
-                  src={img}
-                  alt={`Niney Yassin Photo ${idx + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+                src={img}
+                alt={`Niney Yassin Photo ${idx + 1}`}
+                className="aspect-[3/4] rounded-xl card-bordered hover-glow transition-all"
+                imgClassName="object-cover"
+              />
             ))}
-          </div>
+          </Reveal>
           <p className="text-center text-muted-foreground text-sm mt-4">
             Right-click to download. Please credit: Photo by Niney Yassin
           </p>
@@ -137,7 +135,7 @@ export default function MediaKit() {
         <section className="pb-16">
           <SectionTitle title="Key Achievements" />
           <div className="max-w-3xl mx-auto">
-            <ul className="grid gap-3">
+            <Reveal as="ul" variant="stagger" className="grid gap-3">
               {achievements.map((achievement) => (
                 <li
                   key={achievement}
@@ -147,7 +145,7 @@ export default function MediaKit() {
                   <span className="text-primary text-body-md">{achievement}</span>
                 </li>
               ))}
-            </ul>
+            </Reveal>
           </div>
         </section>
 
@@ -155,7 +153,7 @@ export default function MediaKit() {
         <section className="pb-16">
           <SectionTitle title="Services Offered" />
           <div className="max-w-3xl mx-auto">
-            <div className="flex flex-wrap justify-center gap-3">
+            <Reveal variant="stagger" className="flex flex-wrap justify-center gap-3">
               {services.map((service) => (
                 <span
                   key={service}
@@ -164,13 +162,13 @@ export default function MediaKit() {
                   {service}
                 </span>
               ))}
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* Contact Section */}
         <section className="pb-20">
-          <div className="max-w-2xl mx-auto card-bordered p-8 text-center">
+          <Reveal className="max-w-2xl mx-auto card-bordered p-8 text-center">
             <h3 className="font-display text-2xl text-primary mb-4">
               Work With Me
             </h3>
@@ -203,7 +201,7 @@ export default function MediaKit() {
                 </a>
               </Button>
             </div>
-          </div>
+          </Reveal>
         </section>
       </div>
     </Layout>

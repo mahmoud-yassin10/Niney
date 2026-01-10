@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Download, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialIcons } from "@/components/ui/SocialIcons";
+import { Reveal } from "@/components/shared/Reveal";
+import { ImageWithSkeleton } from "@/components/shared/ImageWithSkeleton";
 import { siteConfig } from "@/lib/config";
 import heroImage from "@/assets/niney-2.jpeg";
 
@@ -27,7 +29,10 @@ export function HeroSection() {
       <div className="container relative z-10 pt-20 pb-12 md:py-0">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text Content */}
-          <div className="order-2 lg:order-1 text-center lg:text-left stagger-children">
+          <Reveal
+            variant="stagger"
+            className="order-2 lg:order-1 text-center lg:text-left"
+          >
             <h1 className="font-display text-primary mb-4">
               {siteConfig.name}
             </h1>
@@ -73,24 +78,25 @@ export function HeroSection() {
 
             {/* Social Icons */}
             <SocialIcons />
-          </div>
+          </Reveal>
 
           {/* Hero Image */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+          <Reveal className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <div className="relative">
               {/* Glow effect behind */}
               <div className="absolute inset-0 rounded-full bg-gold/20 blur-3xl transform scale-90" />
-              
+
               {/* Image frame */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[380px] lg:h-[380px] rounded-full overflow-hidden hero-image-frame">
-                <img
-                  src={heroImage}
-                  alt={siteConfig.name}
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
+              <ImageWithSkeleton
+                src={heroImage}
+                alt={siteConfig.name}
+                loading="eager"
+                decoding="async"
+                className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[380px] lg:h-[380px] rounded-full hero-image-frame"
+                imgClassName="object-cover object-top"
+              />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -169,6 +169,11 @@
     @apply bg-background/95 backdrop-blur-md shadow-lg;
   }
 
+  /* Mobile menu */
+  .mobile-menu {
+    animation: menuIn 0.25s ease;
+  }
+
   /* Category chip */
   .category-chip {
     @apply inline-flex items-center px-3 py-1 rounded-full text-sm;
@@ -186,6 +191,36 @@
     @apply bg-secondary;
     box-shadow: var(--shadow-glow);
   }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered reveal for child elements */
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+  }
+  .reveal-stagger.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+  .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+  .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.18s; }
+  .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.24s; }
+  .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.3s; }
+  .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.36s; }
 }
 
 @layer utilities {
@@ -227,6 +262,17 @@
     }
   }
 
+  @keyframes menuIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* Stagger children */
   .stagger-children > * {
     opacity: 0;
@@ -237,4 +283,63 @@
   .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
   .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
   .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Page transition */
+  .page-transition {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    will-change: opacity, transform;
+  }
+  .page-transition.fadeOut {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  .page-transition.fadeIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Skeleton shimmer */
+  .skeleton-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .skeleton-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--off-white) / 0.12),
+      transparent
+    );
+    animation: shimmer 1.6s infinite;
+  }
+
+  @keyframes shimmer {
+    to {
+      transform: translateX(100%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-stagger > *,
+  .page-transition,
+  .mobile-menu,
+  .animate-float,
+  .animate-fade-in-up {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .skeleton-shimmer::after {
+    animation: none !important;
+  }
 }

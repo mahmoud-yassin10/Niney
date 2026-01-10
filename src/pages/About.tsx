@@ -2,6 +2,8 @@ import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { SectionTitle } from "@/components/shared/SectionTitle";
 import { InfoCard } from "@/components/shared/InfoCard";
+import { Reveal } from "@/components/shared/Reveal";
+import { ImageWithSkeleton } from "@/components/shared/ImageWithSkeleton";
 import nineyImage from "@/assets/niney-3.jpeg";
 
 const pillars = [
@@ -114,15 +116,14 @@ export default function About() {
 
         {/* Bio Section */}
         <section className="pb-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <Reveal variant="stagger" className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden card-bordered">
-                <img
-                  src={nineyImage}
-                  alt="Niney Yassin"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImageWithSkeleton
+                src={nineyImage}
+                alt="Niney Yassin"
+                className="aspect-[4/5] rounded-2xl card-bordered"
+                imgClassName="object-cover"
+              />
               {/* Decorative element */}
               <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-gold/10 -z-10" />
             </div>
@@ -138,7 +139,7 @@ export default function About() {
                 Beyond media, I'm a black belt in Karate (5th place in National Championship), an award-winning marimba performer, and a writer crafting my memoir "On My Way" alongside a poetry collection.
               </p>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         {/* Experience Pillars */}
@@ -147,7 +148,7 @@ export default function About() {
             title="Experience & Leadership"
             subtitle="Key roles that define my journey"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Reveal variant="stagger" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {pillars.map((pillar) => (
               <InfoCard
                 key={pillar.title}
@@ -158,13 +159,13 @@ export default function About() {
                 description={pillar.description}
               />
             ))}
-          </div>
+          </Reveal>
         </section>
 
         {/* Education */}
         <section className="pb-20">
           <SectionTitle title="Education & Programs" />
-          <div className="grid md:grid-cols-2 gap-6">
+          <Reveal variant="stagger" className="grid md:grid-cols-2 gap-6">
             {education.map((item) => (
               <InfoCard
                 key={item.title}
@@ -174,13 +175,13 @@ export default function About() {
                 description={item.description}
               />
             ))}
-          </div>
+          </Reveal>
         </section>
 
         {/* Certifications */}
         <section className="pb-20">
           <SectionTitle title="Certifications" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Reveal variant="stagger" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {certifications.map((cert) => (
               <InfoCard
                 key={cert.title}
@@ -190,13 +191,13 @@ export default function About() {
                 category={cert.category}
               />
             ))}
-          </div>
+          </Reveal>
         </section>
 
         {/* Languages */}
         <section className="pb-20">
           <SectionTitle title="Languages" />
-          <div className="grid sm:grid-cols-3 gap-6">
+          <Reveal variant="stagger" className="grid sm:grid-cols-3 gap-6">
             {languages.map((lang) => (
               <div
                 key={lang.name}
@@ -213,7 +214,7 @@ export default function About() {
                 )}
               </div>
             ))}
-          </div>
+          </Reveal>
         </section>
 
         {/* Beyond Media */}
@@ -222,7 +223,7 @@ export default function About() {
             title="Beyond Media"
             subtitle="Athletics and arts that shape who I am"
           />
-          <div className="grid sm:grid-cols-3 gap-6">
+          <Reveal variant="stagger" className="grid sm:grid-cols-3 gap-6">
             {[
               {
                 title: "Karate",
@@ -253,13 +254,13 @@ export default function About() {
                 <p className="text-gold text-sm">{item.achievement}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </section>
 
         {/* Skills */}
         <section className="pb-20">
           <SectionTitle title="Skills" />
-          <div className="flex flex-wrap justify-center gap-3">
+          <Reveal variant="stagger" className="flex flex-wrap justify-center gap-3">
             {[
               "Public Relations & Networking",
               "Strategic Communication",
@@ -281,7 +282,7 @@ export default function About() {
                 {skill}
               </span>
             ))}
-          </div>
+          </Reveal>
         </section>
       </div>
     </Layout>

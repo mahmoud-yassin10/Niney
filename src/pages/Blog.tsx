@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { Lock } from "lucide-react";
 import { blogCategories } from "@/lib/config";
@@ -90,7 +91,7 @@ export default function Blog() {
         />
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <Reveal className="flex flex-wrap justify-center gap-2 mb-12">
           <button
             onClick={() => setActiveCategory("all")}
             className={`px-4 py-2 rounded-full text-body-sm font-body transition-all ${
@@ -115,10 +116,10 @@ export default function Blog() {
               {cat.isPremium && <Lock className="h-3 w-3" />}
             </button>
           ))}
-        </div>
+        </Reveal>
 
         {/* Blog Posts */}
-        <div className="max-w-3xl mx-auto space-y-6 pb-20">
+        <Reveal variant="stagger" className="max-w-3xl mx-auto space-y-6 pb-20">
           {filteredPosts.map((post) => (
             <article
               key={post.id}
@@ -178,7 +179,7 @@ export default function Blog() {
               </div>
             </article>
           ))}
-        </div>
+        </Reveal>
 
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
@@ -190,7 +191,7 @@ export default function Blog() {
 
         {/* Membership CTA (disabled) */}
         {!siteConfig.features.membershipEnabled && (
-          <section className="max-w-2xl mx-auto text-center py-12 border-t border-border">
+          <Reveal as="section" className="max-w-2xl mx-auto text-center py-12 border-t border-border">
             <h3 className="font-display text-2xl text-primary mb-4">
               Premium Content Coming Soon
             </h3>
@@ -200,7 +201,7 @@ export default function Blog() {
             <span className="inline-block px-6 py-3 rounded-full bg-secondary text-muted-foreground">
               Membership options launching soon
             </span>
-          </section>
+          </Reveal>
         )}
       </div>
     </Layout>

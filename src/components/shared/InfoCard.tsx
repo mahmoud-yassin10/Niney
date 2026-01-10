@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { ImageWithSkeleton } from "@/components/shared/ImageWithSkeleton";
 
 interface InfoCardProps {
   title: string;
@@ -35,13 +36,12 @@ export function InfoCard({
     >
       {/* Image */}
       {image && (
-        <div className="aspect-video rounded-lg overflow-hidden bg-secondary">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        </div>
+        <ImageWithSkeleton
+          src={image}
+          alt={title}
+          className="aspect-video rounded-lg bg-secondary"
+          imgClassName="group-hover:scale-105 transition-transform duration-500"
+        />
       )}
 
       {/* Header */}

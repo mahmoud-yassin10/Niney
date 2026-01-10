@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/shared/Reveal";
+
 interface SectionTitleProps {
   title: string;
   subtitle?: string;
@@ -12,7 +14,7 @@ export function SectionTitle({
   align = "center",
 }: SectionTitleProps) {
   return (
-    <div
+    <Reveal
       className={`mb-10 md:mb-14 ${
         align === "center" ? "text-center" : "text-left"
       } ${className}`}
@@ -23,6 +25,6 @@ export function SectionTitle({
           {subtitle}
         </p>
       )}
-    </div>
+    </Reveal>
   );
 }

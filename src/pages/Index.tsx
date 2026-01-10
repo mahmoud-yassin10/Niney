@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mic, Camera, Users, Pen } from "lucide-react";
 import { SectionTitle } from "@/components/shared/SectionTitle";
+import { Reveal } from "@/components/shared/Reveal";
 
 const highlights = [
   {
@@ -40,7 +41,7 @@ export default function Index() {
             subtitle="From hosting stages to founding movements, I bring stories to life."
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Reveal variant="stagger" className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((item, idx) => (
               <div
                 key={item.title}
@@ -58,7 +59,7 @@ export default function Index() {
                 </p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -70,7 +71,7 @@ export default function Index() {
             subtitle="Initiatives and creative work that make an impact."
           />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Reveal variant="stagger" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 title: "Fem Plus Magazine",
@@ -105,9 +106,9 @@ export default function Index() {
                 <span className="text-muted-foreground text-sm">{project.year}</span>
               </div>
             ))}
-          </div>
+          </Reveal>
 
-          <div className="text-center mt-10">
+          <Reveal className="text-center mt-10">
             <Link
               to="/portfolio"
               className="inline-flex items-center text-gold hover:underline font-body"
@@ -115,14 +116,14 @@ export default function Index() {
               View all projects
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 md:py-28 bg-burgundy-700 light-section">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center light-section p-8 md:p-12 rounded-2xl bg-off-white">
+          <Reveal className="max-w-3xl mx-auto text-center light-section p-8 md:p-12 rounded-2xl bg-off-white">
             <h2 className="font-display text-burgundy-900 mb-4">
               Let's Create Something Unforgettable
             </h2>
@@ -136,7 +137,7 @@ export default function Index() {
               Get in Touch
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
     </Layout>

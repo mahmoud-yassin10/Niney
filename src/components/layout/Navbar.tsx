@@ -70,7 +70,7 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background/98 backdrop-blur-lg border-t border-border">
+        <div className="lg:hidden bg-background/98 backdrop-blur-lg border-t border-border mobile-menu">
           <nav className="container py-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <Link

@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/shared/Reveal";
 import { ArrowLeft, ArrowRight, Calendar } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 
@@ -208,17 +209,17 @@ export default function PortfolioDetail() {
         </Link>
 
         {/* Header */}
-        <div className="max-w-3xl mb-12">
+        <Reveal className="max-w-3xl mb-12">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className="category-chip">{project.category}</span>
             <span className="text-muted-foreground">{project.year}</span>
           </div>
           <h1 className="font-display text-primary mb-2">{project.title}</h1>
           <p className="text-gold font-body text-lg">{project.subtitle}</p>
-        </div>
+        </Reveal>
 
         {/* Content */}
-        <div className="max-w-3xl space-y-10">
+        <Reveal variant="stagger" className="max-w-3xl space-y-10">
           {/* Overview */}
           <section>
             <h2 className="font-display text-xl text-primary mb-4">Overview</h2>
@@ -290,7 +291,7 @@ export default function PortfolioDetail() {
               </Button>
             </div>
           </section>
-        </div>
+        </Reveal>
       </div>
     </Layout>
   );

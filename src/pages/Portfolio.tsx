@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { InfoCard } from "@/components/shared/InfoCard";
+import { Reveal } from "@/components/shared/Reveal";
 import { portfolioCategories } from "@/lib/config";
 
 const projects = [
@@ -104,7 +105,7 @@ export default function Portfolio() {
         />
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <Reveal className="flex flex-wrap justify-center gap-2 mb-12">
           {portfolioCategories.map((category) => (
             <button
               key={category}
@@ -118,10 +119,10 @@ export default function Portfolio() {
               {category}
             </button>
           ))}
-        </div>
+        </Reveal>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+        <Reveal variant="stagger" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
           {filteredProjects.map((project) => (
             <InfoCard
               key={project.id}
@@ -133,7 +134,7 @@ export default function Portfolio() {
               href={`/portfolio/${project.id}`}
             />
           ))}
-        </div>
+        </Reveal>
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">

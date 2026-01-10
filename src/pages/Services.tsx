@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { SectionTitle } from "@/components/shared/SectionTitle";
+import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, Check } from "lucide-react";
 import { siteConfig } from "@/lib/config";
@@ -79,7 +80,7 @@ export default function Services() {
         />
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8 pb-12">
+        <Reveal variant="stagger" className="grid md:grid-cols-2 gap-8 pb-12">
           {services.map((service) => (
             <div
               key={service.id}
@@ -150,10 +151,10 @@ export default function Services() {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
 
         {/* See Portfolio CTA */}
-        <section className="py-12 text-center border-t border-border">
+        <Reveal as="section" className="py-12 text-center border-t border-border">
           <SectionTitle
             title="See Related Work"
             subtitle="Browse my portfolio to see examples of past projects and collaborations."
@@ -168,7 +169,7 @@ export default function Services() {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-        </section>
+        </Reveal>
       </div>
     </Layout>
   );

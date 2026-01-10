@@ -1,5 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { Calendar, FileText, ArrowRight } from "lucide-react";
 
@@ -13,7 +14,7 @@ export default function Research() {
         />
 
         {/* Featured Research Card */}
-        <section className="max-w-3xl mx-auto pb-20">
+        <Reveal as="section" className="max-w-3xl mx-auto pb-20">
           <div className="card-bordered p-8 md:p-10">
             {/* Status Badge */}
             <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -83,17 +84,17 @@ export default function Research() {
               </Button>
             </div>
           </div>
-        </section>
+        </Reveal>
 
         {/* Future Research Section */}
-        <section className="max-w-3xl mx-auto pb-20 text-center">
+        <Reveal as="section" className="max-w-3xl mx-auto pb-20 text-center">
           <h3 className="font-display text-xl text-primary mb-4">
             More Research Coming Soon
           </h3>
           <p className="text-muted-foreground">
             Additional research projects and publications will be added as they become available.
           </p>
-        </section>
+        </Reveal>
       </div>
     </Layout>
   );
