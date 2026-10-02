@@ -137,9 +137,19 @@ export default function Index() {
               </Reveal>
             ))}
           </div>
-          <p className="mt-10 overflow-hidden font-sans text-xs uppercase tracking-[0.35em] text-gold/80">
-            Acting · Theatre · Voiceover · Filmmaking · Writing · Creative Direction
-          </p>
+          <div className="mt-12 overflow-hidden border-y border-off-white/15 py-4" aria-label="Acting, Theatre, Voiceover, Filmmaking, Writing, Creative Direction">
+            <div className="marquee-track font-display text-2xl text-gold/80 md:text-3xl" aria-hidden="true">
+              {[0, 1].map((copy) => (
+                <span key={copy} className="flex shrink-0 gap-10 pr-10">
+                  {["Acting", "Theatre", "Voiceover", "Filmmaking", "Writing", "Creative Direction"].map((word) => (
+                    <span key={word} className="whitespace-nowrap">
+                      {word} <span className="text-off-white/30">•</span>
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
