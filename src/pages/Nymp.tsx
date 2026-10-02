@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Reveal } from "@/components/shared/Reveal";
+import { QuoteInterlude } from "@/components/shared/QuoteInterlude";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/config";
@@ -199,6 +200,7 @@ export default function Nymp() {
           </p>
         </section>
       </div>
+      <QuoteInterlude tone="cream" quote="You are rare." />
     </Layout>
   );
 }

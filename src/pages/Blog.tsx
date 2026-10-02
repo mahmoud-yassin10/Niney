@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Reveal } from "@/components/shared/Reveal";
+import { QuoteInterlude } from "@/components/shared/QuoteInterlude";
 import { Lock } from "lucide-react";
 import { writingCategories } from "@/lib/config";
 
@@ -177,6 +178,7 @@ export default function Blog() {
           </div>
         )}
       </div>
+      <QuoteInterlude tone="cream" quote="I deserve everything I desire." />
     </Layout>
   );
 }

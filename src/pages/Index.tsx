@@ -146,6 +146,8 @@ export default function Index() {
         </div>
       </section>
 
+      <QuoteInterlude tone="cream" quote="It’s already yours." author="The universe" />
+
       <section className="bg-[#101010] py-20 md:py-28">
         <div className="container">
           <Reveal>
@@ -212,11 +214,8 @@ export default function Index() {
       </section>
 
       <QuoteInterlude
-        tone="cream"
-        quote="Carpe diem."
-        author="Horace"
-        source="Odes, 1.11"
-        note="Seize the day."
+        tone="charcoal"
+        quote={["do it tired.", "do it afraid.", "just don’t stop."]}
       />
 
       <section className="bg-burgundy-900 py-24 md:py-32">

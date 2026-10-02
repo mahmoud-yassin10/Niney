@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { InfoCard } from "@/components/shared/InfoCard";
 import { Reveal } from "@/components/shared/Reveal";
+import { QuoteInterlude } from "@/components/shared/QuoteInterlude";
 // Filters are edited in src/lib/config.ts
 import { portfolioCategories } from "@/lib/config";
 
@@ -338,6 +339,7 @@ export default function Portfolio() {
           </div>
         )}
       </div>
+      <QuoteInterlude tone="charcoal" quote="Carpe diem." author="Horace" source="Odes, 1.11" note="Seize the day." />
     </Layout>
   );
 }

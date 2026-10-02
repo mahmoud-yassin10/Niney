@@ -291,6 +291,7 @@ export default function About() {
           </div>
         </section>
       </div>
+      <QuoteInterlude tone="charcoal" quote="She designed a life she loved." />
     </Layout>
   );
 }
