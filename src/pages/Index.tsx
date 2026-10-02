@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
+import { QuoteInterlude } from "@/components/shared/QuoteInterlude";
 
 const practices = [
   {
@@ -73,9 +74,6 @@ const world = [
   { label: "The news", src: "/editorial/newspaper.jpg", alt: "Newspaper, burgundy gloves, and a watch" },
   { label: "The desk", src: "/editorial/desk.jpg", alt: "A writing desk in warm light" },
   { label: "Late hours", src: "/editorial/vinyl.jpg", alt: "A burgundy record on a turntable" },
-  { label: "The city", src: "/editorial/new-york.jpg", alt: "Editorial city photograph with oversized type" },
-  { label: "The shelf", src: "/editorial/beauty-brain.jpg", alt: "Bookshelf, books, and a still life" },
-  { label: "The page", src: "/editorial/vogue.jpg", alt: "Stacked magazines and a clothbound book" },
 ];
 
 export default function Index() {
@@ -96,17 +94,12 @@ export default function Index() {
         </Reveal>
       </section>
 
-      <section className="bg-burgundy-900 py-24 md:py-32">
-        <Reveal className="container max-w-4xl text-center">
-          <p className="font-display text-3xl leading-snug text-primary md:text-5xl">
-            “I do not want a life that fits neatly into one title.”
-          </p>
-          <p className="mt-6 font-sans text-xs uppercase tracking-[0.28em] text-gold">Niney Yassin</p>
-          <p className="mt-3 text-body-sm text-muted-foreground">
-            And I am beginning to think that may be the point.
-          </p>
-        </Reveal>
-      </section>
+      <QuoteInterlude
+        tone="burgundy"
+        quote="I do not want a life that fits neatly into one title."
+        author="Niney Yassin"
+        note="And I am beginning to think that may be the point."
+      />
 
       <section className="relative overflow-hidden bg-burgundy-700 py-20 md:py-28">
         <p className="pointer-events-none absolute -left-4 top-8 font-display text-8xl text-off-white/5 md:text-[10rem]">
@@ -195,30 +188,21 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="bg-burgundy-900">
-        <img
-          src="/editorial/dont-stop.jpg"
-          alt="do it tired. do it afraid. just don't stop."
-          className="mx-auto max-h-[80vh] w-full object-cover"
-          loading="lazy"
-        />
-      </section>
-
       <section className="light-section bg-off-white py-24">
         <Reveal className="container text-center">
           <h2 className="mx-auto max-w-3xl font-display text-4xl text-burgundy-900 md:text-5xl">
             The work you see is only half the story.
           </h2>
-          <div className="mx-auto mt-12 flex max-w-5xl flex-wrap justify-center gap-6">
+          <div className="mx-auto mt-12 grid max-w-5xl grid-cols-3 gap-x-4 gap-y-8 md:grid-cols-6">
             {world.map((item) => (
-              <figure key={item.label} className="w-28 md:w-36">
+              <figure key={item.label} className="flex flex-col items-center">
                 <img
                   src={item.src}
                   alt={item.alt}
                   loading="lazy"
-                  className="aspect-square w-full rounded-full object-cover"
+                  className="aspect-square w-full max-w-[9rem] rounded-full object-cover"
                 />
-                <figcaption className="mt-3 font-sans text-[11px] uppercase tracking-[0.14em] text-burgundy-900">
+                <figcaption className="mt-3 text-center font-sans text-[11px] uppercase tracking-[0.14em] text-burgundy-900">
                   {item.label}
                 </figcaption>
               </figure>
@@ -227,26 +211,13 @@ export default function Index() {
         </Reveal>
       </section>
 
-      <section className="grid md:grid-cols-2">
-        <img
-          src="/editorial/carpe-diem.jpg"
-          alt="Carpe diem. Seize the day. Origin: Latin."
-          className="h-full max-h-[70vh] w-full object-cover"
-          loading="lazy"
-        />
-        <img
-          src="/editorial/designed-a-life.jpg"
-          alt="She designed a life she loved."
-          className="h-full max-h-[70vh] w-full object-cover"
-          loading="lazy"
-        />
-      </section>
-
-      <section className="grid md:grid-cols-3">
-        <img src="/editorial/already-yours.jpg" alt="It's already yours." className="h-80 w-full object-cover md:h-[28rem]" loading="lazy" />
-        <img src="/editorial/everything-i-desire.jpg" alt="I deserve everything I desire." className="h-80 w-full object-cover md:h-[28rem]" loading="lazy" />
-        <img src="/editorial/you-are-rare.jpg" alt="You are rare." className="h-80 w-full object-cover md:h-[28rem]" loading="lazy" />
-      </section>
+      <QuoteInterlude
+        tone="cream"
+        quote="Carpe diem."
+        author="Horace"
+        source="Odes, 1.11"
+        note="Seize the day."
+      />
 
       <section className="bg-burgundy-900 py-24 md:py-32">
         <Reveal className="container max-w-3xl">

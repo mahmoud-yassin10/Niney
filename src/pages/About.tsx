@@ -5,6 +5,7 @@ import { Reveal } from "@/components/shared/Reveal";
 import { ImageWithSkeleton } from "@/components/shared/ImageWithSkeleton";
 import { Button } from "@/components/ui/button";
 import nineyImage from "@/assets/niney-3.jpeg";
+import { QuoteInterlude } from "@/components/shared/QuoteInterlude";
 
 const cares = [
   {
@@ -89,12 +90,14 @@ export default function About() {
 
         <section className="pb-20">
           <Reveal variant="stagger" className="grid items-start gap-12 lg:grid-cols-2">
-            <ImageWithSkeleton
-              src={nineyImage}
-              alt="Niney Yassin"
-              className="aspect-[4/5]"
-              imgClassName="object-cover"
-            />
+            <div className="lg:sticky lg:top-28">
+              <ImageWithSkeleton
+                src={nineyImage}
+                alt="Niney Yassin"
+                className="aspect-[4/5]"
+                imgClassName="object-cover"
+              />
+            </div>
             <div className="space-y-5 text-body-md text-muted-foreground">
               <p className="text-body-lg text-primary">
                 I’m Niney Yassin, an undergraduate student at The American University in Cairo and a Tomorrow’s Leaders Scholar. My interests live somewhere between political science, journalism, diplomacy, media, youth leadership, public speaking, filmmaking, and storytelling.
@@ -111,31 +114,17 @@ export default function About() {
               <p>I am still early in that journey. Learning. Changing my mind. Discovering new interests. Getting things wrong. Trying again. Building.</p>
               <p className="font-display text-2xl text-primary">I do not want a life that fits neatly into one title.</p>
               <p>I want to enter new rooms, understand new people, ask better questions, tell stories worth telling, and leave ideas a little better than I found them.</p>
-              <p className="text-primary">
-                The kind of work I want to leave behind should be able to hold complexity, translate it into language people can understand, and still move forward.
-              </p>
             </div>
           </Reveal>
         </section>
 
-        <section className="pb-16">
-          <img
-            src="/editorial/becoming-her.jpg"
-            alt="Becoming her."
-            className="mx-auto max-h-[70vh] w-full object-cover"
-            loading="lazy"
+        <div className="-mx-4 md:-mx-8">
+          <QuoteInterlude
+            tone="cream"
+            quote="The kind of work I want to leave behind should be able to hold complexity, translate it into language people can understand, and still move forward."
+            author="Niney Yassin"
           />
-        </section>
-
-        <section className="light-section -mx-4 bg-off-white px-4 py-20 md:-mx-8 md:px-8">
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="font-display text-4xl text-burgundy-900 md:text-5xl">
-              “I do not want a life that fits neatly into one title.”
-            </p>
-            <p className="mt-6 font-sans text-xs uppercase tracking-[0.28em] text-burgundy-700">Niney Yassin</p>
-            <p className="mt-3 text-body-sm text-warm-gray/70">And I am beginning to think that may be the point.</p>
-          </Reveal>
-        </section>
+        </div>
 
         <section className="py-20">
           <h2 className="font-display text-4xl text-primary">My Story</h2>
