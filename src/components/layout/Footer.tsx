@@ -123,7 +123,7 @@ export function Footer() {
                 htmlFor="notes-from-niney"
                 className="font-display text-lg text-primary block"
               >
-                Notes from Niney
+                The Niney Notes
               </label>
               <div className="flex gap-2">
                 <input
@@ -139,19 +139,22 @@ export function Footer() {
                   type="submit"
                   className="h-10 shrink-0 rounded-md bg-gold px-4 font-body text-sm text-burgundy-900 hover:bg-gold/90 transition-colors"
                 >
-                  Send
+                  Join the Notes
                 </button>
               </div>
+              <p className="text-body-sm text-muted-foreground">
+                For the curious, the ambitious, and the ones still figuring it out. No noise. Just something worth opening.
+              </p>
               {newsletterNote && (
                 <p className="text-body-sm text-muted-foreground" role="status">
-                  This list is not connected yet. Write to{" "}
+                  Send your email to{" "}
                   <a
-                    href={`mailto:${siteConfig.email}`}
+                    href={`mailto:${siteConfig.email}?subject=Join%20the%20Notes`}
                     className="text-gold hover:underline"
                   >
                     {siteConfig.email}
                   </a>{" "}
-                  if you want notes from Niney.
+                  to join The Niney Notes.
                 </p>
               )}
             </form>
@@ -161,7 +164,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-muted-foreground text-sm">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            © 2025–2026 {siteConfig.name}. All rights reserved.
           </p>
           <p>
             Made by{" "}

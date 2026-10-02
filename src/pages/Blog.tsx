@@ -90,7 +90,7 @@ export default function Blog() {
     <Layout>
       <div className="container">
         <PageHeader
-          title="Writing"
+          title="Blog"
           subtitle="A publication in progress: essays, politics, books, reflections, and poetry. Later, excerpts from longer work will live here too."
         />
 

@@ -4,9 +4,10 @@ export const siteConfig = {
   name: "Niney Yassin",
   mark: "NY",
   // Provisional brand language. Replace when the final headline and bios arrive.
-  title: "Political science journalist and media strategist",
+  title:
+    "Political Science Journalist | Public Speaker & Event MC | Media Strategist | Youth Leader",
   tagline:
-    "Journalism, politics, media, and youth leadership, held in one body of work.",
+    "For the stories worth telling, the questions worth asking, and the rooms still waiting to be built.",
   email: "Niney_yassin@aucegypt.edu",
   phone: "01126441123",
   location: "Cairo, Egypt",
@@ -46,7 +47,7 @@ export const navItems = [
   { label: "About", href: "/about" },
   { label: "Work", href: "/work" },
   { label: "NYMP", href: "/nymp" },
-  { label: "Writing", href: "/writing" },
+  { label: "Blog", href: "/blog" },
   { label: "Research", href: "/research" },
   { label: "Work With Me", href: "/work-with-me" },
   { label: "Contact", href: "/contact" },
@@ -62,11 +63,10 @@ export const footerLinks = [
 // Work filters. Change labels here. Pages should import this list.
 export const portfolioCategories = [
   "All",
-  "Journalism & Media",
+  "Journalism, Media & Creative",
   "Research",
-  "Speaking & Hosting",
+  "Public Speaking & Hosting",
   "Leadership & Impact",
-  "Creative",
 ] as const;
 
 export const writingCategories = [

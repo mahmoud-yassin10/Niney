@@ -200,22 +200,6 @@ function ApplicationForm() {
               ))}
             </select>
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="applicant-compensation">Paid or volunteer</Label>
-            <select
-              id="applicant-compensation"
-              name="compensation"
-              required
-              defaultValue=""
-              className={`flex h-10 w-full rounded-md border px-3 text-sm ${fieldClass}`}
-            >
-              <option value="" disabled>
-                Select one
-              </option>
-              <option value="paid">Paid</option>
-              <option value="volunteer">Volunteer</option>
-            </select>
-          </div>
         </div>
 
         <div className="space-y-2">
@@ -282,7 +266,7 @@ function ApplicationForm() {
           type="submit"
           className="w-full bg-primary text-primary-foreground hover:bg-gold hover:text-burgundy-900"
         >
-          Submit application
+          Apply to Join
         </Button>
       </form>
 
@@ -292,7 +276,7 @@ function ApplicationForm() {
           role="status"
           className="mt-6 p-4 rounded-lg bg-gold/10 border border-gold/30 text-primary text-body-sm leading-relaxed"
         >
-          The form backend is not connected yet. Email your CV to{" "}
+          Email your application and CV to{" "}
           <a
             href={`mailto:${siteConfig.email}`}
             className="text-gold underline underline-offset-4"
@@ -312,7 +296,7 @@ export default function WorkWithMe() {
       <div className="container">
         <PageHeader
           title="Work With Me"
-          subtitle="Two ecosystems on one page: hire Niney, or join a project."
+          subtitle="Hire Niney, or join a project that is already being built."
         />
 
         <section id="hire" className="pb-20 scroll-mt-28">
@@ -343,39 +327,26 @@ export default function WorkWithMe() {
 
         <section id="join" className="pb-20 scroll-mt-28">
           <SectionTitle
-            title="Join a project"
-            subtitle="Volunteer work and paid work are separate."
+            title="Join the Team"
+            subtitle="Some of the things I am building are bigger than one person."
           />
 
-          <Reveal variant="stagger" className="grid md:grid-cols-2 gap-6 mb-12">
-            <article className="card-bordered p-6 md:p-8">
-              <h3 className="font-display text-xl text-primary mb-3">
-                Volunteer
-              </h3>
-              <div className="space-y-4 text-muted-foreground text-body-sm leading-relaxed">
-                <p>
-                  Volunteer roles are only for community and nonprofit projects such as Fem Plus or Resilience.
-                </p>
-                <p>The scope and time commitment will be listed per role.</p>
-                <p>
-                  A certificate or recommendation is not a substitute for wages.
-                </p>
-              </div>
-            </article>
-
-            <article className="card-bordered p-6 md:p-8">
-              <h3 className="font-display text-xl text-primary mb-3">
-                Paid freelance
-              </h3>
-              <div className="space-y-4 text-muted-foreground text-body-sm leading-relaxed">
-                <p>
-                  Paid freelance and part-time roles for the personal brand will open as revenue grows.
-                </p>
-                <p>
-                  Social media manager and editor roles are paid. Unpaid social media manager or editor jobs are not posted.
-                </p>
-              </div>
-            </article>
+          <Reveal className="max-w-3xl mx-auto mb-12 space-y-4 text-body-md text-muted-foreground">
+            <p>
+              I am always interested in meeting people who care about media, storytelling, research, youth work, creativity, and building things that matter.
+            </p>
+            <p>
+              From time to time, volunteer opportunities may open across community-focused initiatives such as Fem Plus, Resilience, and other youth projects.
+            </p>
+            <p>
+              If you want to contribute, learn, build your portfolio, meet people, and leave with work you are genuinely proud to point to, you can apply below.
+            </p>
+            <p className="text-primary">
+              Social Media, Graphic Design, Video Editing, Photography, Videography, Research, Writing, Project Coordination, Events, Content Creation, Community Management.
+            </p>
+            <p>
+              What you gain: real project experience, portfolio-ready work where appropriate, project credit, hands-on responsibility, team collaboration, feedback and mentorship, a certificate upon successful completion, and recommendation letters for people whose work and commitment I can genuinely recommend.
+            </p>
           </Reveal>
 
           <Reveal className="max-w-3xl mx-auto">

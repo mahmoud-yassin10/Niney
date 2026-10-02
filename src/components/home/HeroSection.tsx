@@ -1,102 +1,156 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Download, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialIcons } from "@/components/ui/SocialIcons";
-import { Reveal } from "@/components/shared/Reveal";
 import { ImageWithSkeleton } from "@/components/shared/ImageWithSkeleton";
 import { siteConfig } from "@/lib/config";
 import heroImage from "@/assets/niney-2.jpeg";
 
-// Provisional copy. Replace when final brand language arrives.
-const heroActions = {
-  explore: "Explore My Work",
-  collaborate: "Work With Me",
-  cv: "Download CV",
-};
+const rotatingWords = [
+  "Journalist.",
+  "Speaker.",
+  "Storyteller.",
+  "Strategist.",
+  "Filmmaker.",
+  "Leader.",
+];
+
+const floatWords = [
+  { label: "POLITICS", className: "top-[18%] left-[6%]" },
+  { label: "JOURNALISM", className: "top-[12%] right-[8%]" },
+  { label: "DIPLOMACY", className: "top-[42%] left-[2%]" },
+  { label: "MEDIA", className: "bottom-[28%] right-[4%]" },
+  { label: "PUBLIC SPEAKING", className: "bottom-[16%] left-[10%]" },
+  { label: "FILM", className: "top-[58%] right-[12%]" },
+  { label: "LEADERSHIP", className: "bottom-[8%] right-[22%]" },
+];
 
 export function HeroSection() {
-  return (
-    <section className="min-h-screen relative flex items-center floating-icons-bg overflow-hidden">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-90" />
+  const [wordIndex, setWordIndex] = useState(0);
+  const [showIntro, setShowIntro] = useState(false);
+  const [introPhase, setIntroPhase] = useState<"mark" | "name" | "gone">("mark");
 
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-gold/5 animate-float" />
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const seen = sessionStorage.getItem("ny-intro");
+    if (reduce || seen) return;
+    setShowIntro(true);
+    const toName = window.setTimeout(() => setIntroPhase("name"), 700);
+    const toGone = window.setTimeout(() => {
+      setIntroPhase("gone");
+      setShowIntro(false);
+      sessionStorage.setItem("ny-intro", "1");
+    }, 1900);
+    return () => {
+      window.clearTimeout(toName);
+      window.clearTimeout(toGone);
+    };
+  }, []);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    const id = window.setInterval(() => {
+      setWordIndex((current) => (current + 1) % rotatingWords.length);
+    }, 2200);
+    return () => window.clearInterval(id);
+  }, []);
+
+  return (
+    <section className="relative min-h-screen overflow-hidden bg-burgundy-900">
+      {showIntro && (
         <div
-          className="absolute top-40 right-20 w-32 h-32 rounded-full bg-primary/5 animate-float"
-          style={{ animationDelay: "1s" }}
-        />
-        <div
-          className="absolute bottom-40 left-1/4 w-16 h-16 rounded-full bg-gold/5 animate-float"
-          style={{ animationDelay: "2s" }}
-        />
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-burgundy-900"
+          aria-hidden="true"
+        >
+          <p className="font-display text-primary text-6xl md:text-8xl tracking-wide">
+            {introPhase === "mark" ? "NY" : "NINEY YASSIN"}
+          </p>
+        </div>
+      )}
+
+      <div className="pointer-events-none absolute inset-0 flex items-center overflow-hidden">
+        <p className="w-[120%] -translate-x-[6%] select-none text-left font-display text-[16vw] leading-[0.82] text-off-white/[0.09]">
+          NINEY
+          <br />
+          YASSIN
+        </p>
       </div>
 
-      <div className="container relative z-10 pt-20 pb-12 md:py-0">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text Content */}
-          <Reveal
-            variant="stagger"
-            className="order-2 lg:order-1 text-center lg:text-left"
-          >
-            <h1 className="font-display text-primary mb-4">
+      {floatWords.map((word) => (
+        <span
+          key={word.label}
+          className={`pointer-events-none absolute hidden font-sans text-[11px] uppercase tracking-[0.28em] text-gold/80 md:block ${word.className}`}
+        >
+          {word.label}
+        </span>
+      ))}
+
+      <div className="container relative z-10 flex min-h-screen flex-col justify-end pb-16 pt-28 md:justify-center md:pb-20">
+        <div className="grid items-end gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="order-2 text-center lg:order-1 lg:text-left">
+            <p className="font-script text-3xl text-gold md:text-4xl">Niney Yassin</p>
+            <h1 className="mt-2 font-display text-5xl text-primary md:text-7xl">
               {siteConfig.name}
             </h1>
-            <p className="text-gold font-body text-lg md:text-xl mb-6">
+            <p className="mt-4 font-sans text-xs uppercase tracking-[0.22em] text-gold md:text-sm">
               {siteConfig.title}
             </p>
-            <p className="text-primary/80 text-body-lg max-w-lg mx-auto lg:mx-0 mb-8">
-              {siteConfig.tagline}
+            <p className="mt-5 h-8 font-display text-2xl text-primary md:text-3xl" aria-live="polite">
+              {rotatingWords[wordIndex]}
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center lg:justify-start mb-8">
+            <p className="mx-auto mt-4 max-w-xl text-body-md text-primary/85 lg:mx-0">
+              I work where policy, people, and stories meet. From political communication and journalism to public speaking, filmmaking, youth leadership, and media strategy, I use words, ideas, and stories to make people pay attention, think differently, and care more deeply.
+            </p>
+            <p className="mt-4 font-sans text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              Politics. Diplomacy. Journalism. Media. Storytelling. Leadership.
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap lg:justify-start">
               <Button
                 asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-gold hover:text-burgundy-900 font-body text-base px-8"
+                className="bg-primary font-body text-base text-primary-foreground hover:bg-gold hover:text-burgundy-900"
               >
                 <Link to="/work">
-                  {heroActions.explore}
+                  Explore My Work
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button
                 asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-gold hover:text-burgundy-900 font-body text-base px-8"
+                className="bg-primary font-body text-base text-primary-foreground hover:bg-gold hover:text-burgundy-900"
               >
-                <Link to="/work-with-me">{heroActions.collaborate}</Link>
+                <Link to="/work-with-me">Work With Me</Link>
               </Button>
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-primary/50 text-primary hover:bg-primary/10 font-body text-base px-8"
+                className="border-primary/50 font-body text-base text-primary hover:bg-primary/10"
               >
                 <a href={siteConfig.cvUrl} download>
                   <Download className="mr-2 h-4 w-4" />
-                  {heroActions.cv}
+                  Download CV
                 </a>
               </Button>
             </div>
+            <SocialIcons className="mt-8 justify-center lg:justify-start" />
+          </div>
 
-            {/* Social Icons */}
-            <SocialIcons className="justify-center lg:justify-start" />
-          </Reveal>
-
-          {/* Hero Image */}
-          <Reveal className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <ImageWithSkeleton
-              src={heroImage}
-              alt={siteConfig.name}
-              loading="eager"
-              decoding="async"
-              className="w-full max-w-[460px] aspect-[4/5]"
-              imgClassName="object-cover object-[center_20%]"
-            />
-          </Reveal>
+          <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+            <div className="relative w-[min(100%,460px)] lg:-mr-10 lg:translate-y-6">
+              <ImageWithSkeleton
+                src={heroImage}
+                alt={siteConfig.name}
+                loading="eager"
+                decoding="async"
+                className="aspect-[4/5] w-full shadow-[0_40px_90px_rgba(0,0,0,0.45)]"
+                imgClassName="object-cover object-[center_20%]"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

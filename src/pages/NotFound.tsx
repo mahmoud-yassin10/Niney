@@ -9,7 +9,7 @@ const waysOn = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
   { label: "NYMP", href: "/nymp" },
-  { label: "Writing", href: "/writing" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 

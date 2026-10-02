@@ -65,6 +65,8 @@ export default {
       fontFamily: {
         display: ["Adore", "Georgia", "serif"],
         body: ['"Times New Roman"', "Times", "serif"],
+        script: ['"Great Vibes"', "cursive"],
+        sans: ["Outfit", "system-ui", "sans-serif"],
       },
       fontSize: {
         // Custom type scale

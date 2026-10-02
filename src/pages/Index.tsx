@@ -1,63 +1,81 @@
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { Link } from "react-router-dom";
-import { ArrowRight, Landmark, Clapperboard, Mic, Users } from "lucide-react";
-import { SectionTitle } from "@/components/shared/SectionTitle";
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 
-// Provisional copy. Replace when final brand language arrives.
-const highlights = [
+const practices = [
   {
-    icon: Landmark,
+    number: "01",
     title: "Politics, Journalism & Research",
     description:
-      "Political communication, international affairs, research, interviewing, and journalism.",
+      "I explore how policy, power, media, and public narratives shape the way people understand the world. My work spans political communication, international affairs, journalism, interviewing, research, and the intersection between diplomacy and media.",
+    hover: "Policy · Interviews · Diplomacy · Research",
   },
   {
-    icon: Clapperboard,
-    title: "Media, Marketing & Storytelling",
+    number: "02",
+    title: "Media, Marketing, Filmmaking & Storytelling",
     description:
-      "Media strategy, content strategy, filmmaking, campaigns, digital storytelling, and marketing.",
+      "From campaigns and content strategy to filmmaking, directing, writing, and digital storytelling, I build narratives designed to make people stop, feel, remember, and act.",
+    hover: "Campaigns · Film · Direction · Strategy · Content · Creative",
   },
   {
-    icon: Mic,
-    title: "Speaking, Hosting & Communication",
+    number: "03",
+    title: "Public Speaking, Event MCing & Communication",
     description:
-      "Public speaking, event MC work, hosting, moderation, voice work, and on-camera communication.",
+      "Public speaker, event MC, moderator, host, and voice artist. I work both on stage and on camera, turning ideas into conversations audiences can connect with and remember.",
+    hover: "Stage · Moderation · Hosting · Voice · Interviews · On Camera",
   },
   {
-    icon: Users,
+    number: "04",
     title: "Leadership, Projects & Youth Impact",
     description:
-      "Programs, initiatives, mentorship, community building, and youth leadership.",
+      "I build spaces where young people can speak, create, lead, and access opportunities. Through initiatives, mentorship, community-building, and youth programs, I care about turning potential into something visible.",
+    hover: "Mentorship · Programs · Community · Youth",
   },
 ];
 
 const featuredWork = [
   {
-    id: "fem-plus",
-    label: "Case study",
-    title: "Fem Plus Magazine",
+    id: "yalla-success",
+    number: "01",
+    title: "Yalla Success",
+    role: "Deputy CEO",
     description:
-      "A platform for women's storytelling, media, and social advocacy, and for authentic female voices in the Arab world.",
-    year: "2025-Present",
+      "A youth-focused platform built around opportunity, development, and access. My work includes leadership, media strategy, communications, youth engagement, and helping shape how the initiative grows and reaches its community.",
+    tone: "bg-[#141210] text-off-white",
   },
   {
     id: "resilience-foundation",
-    label: "Parent project",
+    number: "02",
     title: "Resilience Foundation",
+    role: "Founder",
     description:
-      "Global awareness and mentorship for Palestinian youth. The Resilience film sits inside this work.",
-    year: "2025-Present",
+      "An initiative centered on Palestinian youth, storytelling, awareness, mentorship, and creating spaces where voices too often reduced to headlines can be heard as people.",
+    inside: "The Resilience short film · Youth mentorship · Storytelling and awareness · Future educational and advocacy work",
+    tone: "light-section bg-off-white text-burgundy-900",
   },
   {
-    id: "yalla-success",
-    label: "Media direction",
-    title: "Yalla Success / Arab Women Hackathon",
+    id: "fem-plus",
+    number: "03",
+    title: "Fem Plus Magazine",
+    role: "Founder",
     description:
-      "Led media strategy for the Arab Women Hackathon, with 500+ participants. Mentored 35 girls on content creation, scriptwriting, and digital presence.",
-    year: "2025-Present",
+      "A media platform created to make room for women and girls to tell their own stories. Fem Plus brings together journalism, storytelling, social advocacy, creativity, and authentic female voices across the Arab world.",
+    tone: "bg-burgundy-700 text-off-white",
   },
+];
+
+const world = [
+  { label: "Politics", src: "/editorial/politics-board.jpg", alt: "Politics and diplomacy mood board" },
+  { label: "Reading", src: "/editorial/book-ribbon.jpg", alt: "Open book with a burgundy ribbon" },
+  { label: "Books", src: "/editorial/spines.jpg", alt: "Burgundy book spines" },
+  { label: "The news", src: "/editorial/newspaper.jpg", alt: "Newspaper, burgundy gloves, and a watch" },
+  { label: "The desk", src: "/editorial/desk.jpg", alt: "A writing desk in warm light" },
+  { label: "Late hours", src: "/editorial/vinyl.jpg", alt: "A burgundy record on a turntable" },
+  { label: "The city", src: "/editorial/new-york.jpg", alt: "Editorial city photograph with oversized type" },
+  { label: "The shelf", src: "/editorial/beauty-brain.jpg", alt: "Bookshelf, books, and a still life" },
+  { label: "The page", src: "/editorial/vogue.jpg", alt: "Stacked magazines and a clothbound book" },
 ];
 
 export default function Index() {
@@ -65,65 +83,101 @@ export default function Index() {
     <Layout>
       <HeroSection />
 
-      {/* Highlights Section */}
-      <section className="py-20 md:py-28 bg-burgundy-700">
-        <div className="container">
-          <SectionTitle
-            title="What I Do"
-            subtitle="Four areas of practice: politics, media, speaking, and youth leadership."
-          />
+      <section className="light-section bg-off-white py-24 md:py-32">
+        <Reveal className="container max-w-4xl">
+          <p className="font-script text-3xl text-burgundy-700">A note</p>
+          <h2 className="mt-3 font-display text-4xl leading-tight text-burgundy-900 md:text-6xl">
+            I have never wanted to fit into one room. I want to learn how to enter many, understand them deeply, and leave something meaningful behind.
+          </h2>
+          <p className="mt-8 max-w-2xl text-body-lg text-warm-gray/80">
+            Politics gives me the questions. Journalism teaches me to ask them. Media gives them reach. Storytelling gives them meaning. Leadership gives me a reason to use all of it.
+          </p>
+          <p className="mt-6 font-display text-2xl text-burgundy-900">That is what connects the work.</p>
+        </Reveal>
+      </section>
 
-          <Reveal variant="stagger" className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {highlights.map((item) => (
-              <div
-                key={item.title}
-                className="card-bordered p-8 md:p-10 text-left"
-              >
-                <item.icon className="w-6 h-6 text-gold/70 mb-6" strokeWidth={1.5} />
-                <h3 className="font-display text-lg text-primary mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground text-body-sm">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+      <section className="bg-burgundy-900 py-24 md:py-32">
+        <Reveal className="container max-w-4xl text-center">
+          <p className="font-display text-3xl leading-snug text-primary md:text-5xl">
+            “I do not want a life that fits neatly into one title.”
+          </p>
+          <p className="mt-6 font-sans text-xs uppercase tracking-[0.28em] text-gold">Niney Yassin</p>
+          <p className="mt-3 text-body-sm text-muted-foreground">
+            And I am beginning to think that may be the point.
+          </p>
+        </Reveal>
+      </section>
+
+      <section className="relative overflow-hidden bg-burgundy-700 py-20 md:py-28">
+        <p className="pointer-events-none absolute -left-4 top-8 font-display text-8xl text-off-white/5 md:text-[10rem]">
+          WORK
+        </p>
+        <div className="container relative">
+          <Reveal>
+            <p className="font-sans text-xs uppercase tracking-[0.28em] text-gold">Practice</p>
+            <h2 className="mt-3 font-display text-4xl text-primary md:text-5xl">What I Do</h2>
+            <p className="mt-4 max-w-2xl text-body-lg text-primary/80">
+              Different disciplines. One purpose: turning ideas into stories, conversations, movements, and impact.
+            </p>
           </Reveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {practices.map((item) => (
+              <Reveal key={item.number}>
+                <article className="group relative overflow-hidden border border-off-white/15 p-8 transition-transform duration-500 hover:-translate-y-1">
+                  <span className="pointer-events-none absolute -right-2 -top-6 font-display text-8xl text-off-white/10">
+                    {item.number}
+                  </span>
+                  <p className="font-sans text-xs tracking-[0.25em] text-gold">{item.number}</p>
+                  <h3 className="mt-3 font-display text-2xl text-primary">{item.title}</h3>
+                  <p className="mt-4 text-body-sm text-primary/75">{item.description}</p>
+                  <p className="mt-5 font-sans text-[11px] uppercase tracking-[0.16em] text-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    {item.hover}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-10 overflow-hidden font-sans text-xs uppercase tracking-[0.35em] text-gold/80">
+            Acting · Theatre · Voiceover · Filmmaking · Writing · Creative Direction
+          </p>
         </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section className="py-20 md:py-28">
+      <section className="bg-[#101010] py-20 md:py-28">
         <div className="container">
-          <SectionTitle
-            title="Featured Work"
-            subtitle="Three flagship projects from the wider body of work."
-          />
-
-          <Reveal variant="stagger" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredWork.map((project) => (
-              <Link
-                key={project.id}
-                to={`/work/${project.id}`}
-                className="group card-bordered block p-8 md:p-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
-              >
-                <span className="category-chip mb-4">{project.label}</span>
-                <h3 className="font-display text-xl text-primary mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground text-body-sm mb-4">
-                  {project.description}
-                </p>
-                <span className="text-muted-foreground text-sm">{project.year}</span>
-              </Link>
-            ))}
+          <Reveal>
+            <p className="font-sans text-xs uppercase tracking-[0.28em] text-gold">Selected works</p>
+            <h2 className="mt-3 font-display text-4xl text-off-white md:text-5xl">Featured Work</h2>
+            <p className="mt-4 max-w-2xl text-body-lg text-off-white/70">
+              Selected projects that began as ideas and became communities, platforms, stories, and spaces for other people to grow.
+            </p>
           </Reveal>
-
-          <Reveal className="text-center mt-10">
-            <Link
-              to="/work"
-              className="inline-flex items-center text-gold hover:underline font-body"
-            >
+          <div className="mt-12 space-y-6">
+            {featuredWork.map((project) => (
+              <Reveal key={project.id}>
+                <Link
+                  to={`/work/${project.id}`}
+                  className={`group grid gap-6 p-8 md:grid-cols-[auto_1fr_auto] md:items-end md:p-12 ${project.tone}`}
+                >
+                  <p className="font-display text-5xl opacity-40">{project.number}</p>
+                  <div>
+                    <h3 className="font-display text-3xl md:text-5xl">{project.title}</h3>
+                    <p className="mt-2 font-sans text-xs uppercase tracking-[0.22em] opacity-70">{project.role}</p>
+                    <p className="mt-4 max-w-2xl text-body-sm opacity-80">{project.description}</p>
+                    {project.inside ? (
+                      <p className="mt-3 text-body-sm opacity-70">Inside the project: {project.inside}</p>
+                    ) : null}
+                  </div>
+                  <span className="inline-flex items-center font-sans text-xs uppercase tracking-[0.2em]">
+                    View Case Study
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-10">
+            <Link to="/work" className="inline-flex items-center text-gold hover:underline">
               View all work
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
@@ -131,25 +185,84 @@ export default function Index() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 md:py-28 bg-burgundy-700 light-section">
-        <div className="container">
-          <Reveal className="max-w-3xl mx-auto text-center light-section p-8 md:p-12 rounded-2xl bg-off-white">
-            <h2 className="font-display text-burgundy-900 mb-4">
-              Bring a project
-            </h2>
-            <p className="text-warm-gray/80 text-body-lg mb-8">
-              Speaking, media, research, and longer collaborations are gathered in one place.
-            </p>
-            <Link
-              to="/work-with-me"
-              className="inline-flex items-center justify-center px-8 py-4 bg-burgundy-900 text-off-white rounded-xl font-body hover:bg-burgundy-700 transition-colors"
-            >
-              Work With Me
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Reveal>
-        </div>
+      <section className="bg-burgundy-900">
+        <img
+          src="/editorial/dont-stop.jpg"
+          alt="do it tired. do it afraid. just don't stop."
+          className="mx-auto max-h-[80vh] w-full object-cover"
+          loading="lazy"
+        />
+      </section>
+
+      <section className="light-section bg-off-white py-24">
+        <Reveal className="container text-center">
+          <h2 className="mx-auto max-w-3xl font-display text-4xl text-burgundy-900 md:text-5xl">
+            The work you see is only half the story.
+          </h2>
+          <div className="mx-auto mt-12 flex max-w-5xl flex-wrap justify-center gap-6">
+            {world.map((item) => (
+              <figure key={item.label} className="w-28 md:w-36">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="aspect-square w-full rounded-full object-cover"
+                />
+                <figcaption className="mt-3 font-sans text-[11px] uppercase tracking-[0.14em] text-burgundy-900">
+                  {item.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="grid md:grid-cols-2">
+        <img
+          src="/editorial/carpe-diem.jpg"
+          alt="Carpe diem. Seize the day. Origin: Latin."
+          className="h-full max-h-[70vh] w-full object-cover"
+          loading="lazy"
+        />
+        <img
+          src="/editorial/designed-a-life.jpg"
+          alt="She designed a life she loved."
+          className="h-full max-h-[70vh] w-full object-cover"
+          loading="lazy"
+        />
+      </section>
+
+      <section className="grid md:grid-cols-3">
+        <img src="/editorial/already-yours.jpg" alt="It's already yours." className="h-80 w-full object-cover md:h-[28rem]" loading="lazy" />
+        <img src="/editorial/everything-i-desire.jpg" alt="I deserve everything I desire." className="h-80 w-full object-cover md:h-[28rem]" loading="lazy" />
+        <img src="/editorial/you-are-rare.jpg" alt="You are rare." className="h-80 w-full object-cover md:h-[28rem]" loading="lazy" />
+      </section>
+
+      <section className="bg-burgundy-900 py-24 md:py-32">
+        <Reveal className="container max-w-3xl">
+          <h2 className="font-display text-4xl text-primary md:text-6xl">
+            Your idea deserves more than staying an idea.
+          </h2>
+          <div className="mt-8 space-y-2 text-body-lg text-primary/80">
+            <p>Maybe it is a story you have been afraid to tell.</p>
+            <p>A project you keep postponing.</p>
+            <p>A message you know could reach further.</p>
+            <p>A room you are finally ready to walk into.</p>
+          </div>
+          <p className="mt-8 text-body-md text-primary/80">
+            If you are ready to build it, say it, film it, research it, launch it, or give it a voice, this might be where we begin.
+          </p>
+          <Link
+            to="/work-with-me"
+            className="mt-8 inline-flex items-center font-display text-2xl text-gold hover:underline"
+          >
+            Let’s Build Something
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            Speaking · Media · Strategy · Research · Storytelling · Collaboration
+          </p>
+        </Reveal>
       </section>
     </Layout>
   );

@@ -29,11 +29,11 @@ export const projects: WorkProject[] = [
   {
     id: "fem-plus",
     title: "Fem Plus Magazine",
-    subtitle: "Founder",
+    subtitle: "Founder & Editor-in-Chief",
     year: "2025-Present",
     category: "Leadership & Impact",
     description:
-      "Empowering women through storytelling, media, and social advocacy. Building a platform for authentic female voices in the Arab world.",
+      "A media platform built to make more room for women and girls to tell their own stories through journalism, culture, media, creativity, and social advocacy across the Arab world.",
     overview:
       "Fem Plus Magazine is a platform dedicated to empowering women through storytelling, media, and social advocacy. It provides a space for authentic female voices in the Arab world to share their stories, challenges, and triumphs.",
     whatIDid: [
@@ -66,7 +66,7 @@ export const projects: WorkProject[] = [
     title: "The Resilience Short Film",
     subtitle: "Writer, Director, Actor",
     year: "2025",
-    category: "Creative",
+    category: "Journalism, Media & Creative",
     parentId: "resilience-foundation",
     description:
       "Wrote, directed, and acted in this powerful short film submitted to Cairo International Film Festival. A story of strength and perseverance.",
@@ -82,14 +82,14 @@ export const projects: WorkProject[] = [
   },
   {
     id: "yalla-success",
-    title: "Yalla Success - Arab Women Hackathon",
-    subtitle: "Media Director",
+    title: "Yalla Success",
+    subtitle: "Deputy CEO",
     year: "2025-Present",
     category: "Leadership & Impact",
     description:
-      "Led media strategy for the hackathon with 500+ participants. Mentored 35 girls on content creation, scriptwriting, and digital presence.",
+      "A youth development platform where I work across leadership, media, programs, operations, mentorship, and organizational strategy.",
     overview:
-      "Led the comprehensive media strategy for the Arab Women Hackathon, an event that brought together over 500 participants from across the Arab world to innovate and collaborate.",
+      "My journey inside Yalla Success has grown from content and media into helping shape programs, teams, systems, and the direction of the organization. The Arab Women Hackathon sits inside this work: I led media strategy for an initiative reaching 500+ participants and mentored young women in content creation and scriptwriting.",
     whatIDid: [
       "Developed and executed comprehensive media strategy",
       "Created content calendars and social media campaigns",
@@ -100,12 +100,12 @@ export const projects: WorkProject[] = [
   },
   {
     id: "squash-championship",
-    title: "Squash National Championship 2025",
-    subtitle: "Event MC",
+    title: "Public Speaking & Event MCing",
+    subtitle: "Speaker | Host | MC",
     year: "2025",
-    category: "Speaking & Hosting",
+    category: "Public Speaking & Hosting",
     description:
-      "Hosted the Squash National Championship in Port Said, engaging audiences and delivering professional live commentary.",
+      "Hosting, moderation, and public speaking, including the Squash National Championship in Port Said.",
     overview:
       "Hosted the prestigious Squash National Championship in Port Said, providing professional live commentary and engaging audiences throughout the multi-day event.",
     whatIDid: [
@@ -118,10 +118,10 @@ export const projects: WorkProject[] = [
   },
   {
     id: "voiceover-work",
-    title: "Voiceover & Screenwriting Portfolio",
+    title: "Voiceover & Screenwriting",
     subtitle: "Voice Artist & Writer",
     year: "Ongoing",
-    category: "Speaking & Hosting",
+    category: "Journalism, Media & Creative",
     description:
       "Professional voiceover work for film, ads, and digital platforms. Screenwriting for various media projects.",
     overview:
@@ -136,10 +136,10 @@ export const projects: WorkProject[] = [
   },
   {
     id: "acting-portfolio",
-    title: "Acting Portfolio",
-    subtitle: "Actress",
+    title: "Acting & Performance",
+    subtitle: "Actor | Performer",
     year: "Ongoing",
-    category: "Speaking & Hosting",
+    category: "Journalism, Media & Creative",
     description:
       "Finalist in casting for 'Kamel El 3adad.' Attended The Star Acting workshop. Continuing to develop craft and pursue film opportunities.",
     overview:
@@ -158,7 +158,7 @@ export const projects: WorkProject[] = [
     title: "Writing & Poetry",
     subtitle: "Author",
     year: "Ongoing",
-    category: "Creative",
+    category: "Journalism, Media & Creative",
     description:
       "Currently writing memoir 'On My Way' and a poetry collection. Exploring themes of resilience, identity, and transformation.",
     overview:
@@ -195,7 +195,7 @@ export const projects: WorkProject[] = [
     title: "AUC Media Innovation Hub",
     subtitle: "Participant",
     year: "2024",
-    category: "Journalism & Media",
+    category: "Journalism, Media & Creative",
     description:
       "Intensive bootcamp on storytelling and digital content creation at the American University in Cairo.",
     overview:
@@ -208,22 +208,94 @@ export const projects: WorkProject[] = [
       "Applied learnings to subsequent projects",
     ],
   },
+  {
+    id: "she-builds-mena",
+    title: "SHE BUILDs MENA",
+    subtitle: "Programme Manager",
+    year: "2025-Present",
+    category: "Leadership & Impact",
+    parentId: "yalla-success",
+    description:
+      "A multi-month entrepreneurship and leadership program I helped build and manage, guiding participants from early concepts into structured ventures.",
+    overview:
+      "SHE BUILDs MENA sits inside the Yalla Success work. I helped build and manage the program from the ground up.",
+    whatIDid: [
+      "Helped build and manage the program",
+      "Guided participants through teams, ideas, and projects",
+    ],
+  },
+  {
+    id: "tomorrows-leaders",
+    title: "Tomorrow’s Leaders",
+    subtitle: "Cohort Representative",
+    year: "Present",
+    category: "Leadership & Impact",
+    description: "Cohort representative in the Tomorrow’s Leaders program at The American University in Cairo.",
+    overview: "Tomorrow’s Leaders Scholar and cohort representative at The American University in Cairo.",
+  },
+  {
+    id: "fincon",
+    title: "FINCON",
+    subtitle: "Marketing Head",
+    year: "Present",
+    category: "Leadership & Impact",
+    description: "Marketing leadership for FINCON.",
+    overview: "Marketing Head at FINCON, across campaign and communications work.",
+  },
+  {
+    id: "yyas",
+    title: "Yale Young African Scholars",
+    subtitle: "2025 Cohort",
+    year: "2025",
+    category: "Leadership & Impact",
+    description: "2025 cohort of Yale Young African Scholars.",
+    overview: "College preparation, global leadership, and academic development through the 2025 Yale Young African Scholars cohort.",
+  },
+  {
+    id: "ivy-league-club",
+    title: "Ivy League Club",
+    subtitle: "Founder",
+    year: "Present",
+    category: "Leadership & Impact",
+    description: "Founded the Ivy League Club.",
+    overview: "A student community I founded around ambition, preparation, and access.",
+  },
 ];
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  const filteredProjects =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
+  const workOrder = [
+    "yalla-success",
+    "resilience-foundation",
+    "fem-plus",
+    "she-builds-mena",
+    "the-resilience",
+    "tomorrows-leaders",
+    "fincon",
+    "lumiere-research",
+    "squash-championship",
+    "acting-portfolio",
+    "voiceover-work",
+    "auc-bootcamp",
+    "yyas",
+    "ivy-league-club",
+    "writing",
+  ];
+
+  const filteredProjects = (activeFilter === "All"
+    ? projects
+    : projects.filter((project) => project.category === activeFilter)
+  )
+    .slice()
+    .sort((a, b) => workOrder.indexOf(a.id) - workOrder.indexOf(b.id));
 
   return (
     <Layout>
       <div className="container">
         <PageHeader
           title="Work"
-          subtitle="Projects, initiatives, and creative work that make an impact."
+          subtitle="Some of the things I have built, led, researched, filmed, written, hosted, and helped bring into the world."
         />
 
         <Reveal className="flex flex-wrap justify-center gap-2 mb-12">

@@ -1,88 +1,125 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
-import { SectionTitle } from "@/components/shared/SectionTitle";
 import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
-const path = [
-  {
-    title: "Direction",
-    description: "Discover what you want.",
-  },
-  {
-    title: "Skills",
-    description: "Build skills.",
-  },
-  {
-    title: "Proof",
-    description: "Make evidence of those skills.",
-  },
-  {
-    title: "Opportunities",
-    description:
-      "Turn that into scholarships, programs, internships, freelance work, and stronger applications.",
-  },
-];
-
-// EGP prices arrive later.
-const sessionPrice = "Price to be confirmed";
-const sessionTimeline = "Agreed per engagement";
+import { siteConfig } from "@/lib/config";
 
 const offers = [
   {
     id: "mentorship",
     title: "1:1 Mentorship",
-    who: "Youth who want a direct conversation about direction and next steps.",
-    problem:
-      "The next move is hard to see when you are still deciding what you want.",
-    included:
-      "A one-to-one session on your questions, with guidance you can use after the conversation.",
+    price: "$50 USD / 60 minutes",
+    body: "For the person who has ambition, options, questions, and absolutely no idea which one should come first. This is a focused one-to-one conversation built around you: where you are, what you are trying to do, what is getting in the way, and what your next moves could realistically look like.",
+    points: [
+      "Direction and goal-setting",
+      "Opportunities and next steps",
+      "Projects and extracurricular strategy",
+      "Leadership development",
+      "Personal positioning",
+      "Building a roadmap",
+    ],
+    note: "Book one hour or multiple hours depending on what you need. 1 hour $50. 2 hours $100. 3 hours $150.",
+    cta: "Book Mentorship",
   },
   {
     id: "applications",
     title: "Applications & Opportunities",
-    who: "Youth preparing applications for scholarships, programs, internships, or similar openings.",
-    problem:
-      "Work stays hard to see when an application does not show it clearly.",
-    included:
-      "Guidance on how you present your work, and on which opportunities fit what you are building.",
+    price: "$50 USD / hour",
+    body: "A strong application does not invent a better version of you. It makes the strongest parts of the real you impossible to miss. I help you identify your story, position your experiences, understand what an opportunity is actually looking for, and make your application feel intentional.",
+    points: [
+      "Scholarship applications",
+      "Youth programs",
+      "Summer programs",
+      "Internships",
+      "Personal statements",
+      "Essays",
+      "CV positioning",
+      "Opportunity strategy",
+      "Interview preparation",
+    ],
+    cta: "Work on My Application",
   },
   {
     id: "personal-branding",
     title: "Personal Branding",
-    who: "Young people shaping a public presence around their work.",
-    problem: "A profile scatters when there is no clear point of view.",
-    included:
-      "Help defining how you introduce yourself and how your public work lines up with the opportunities you want.",
+    price: "$50 USD / hour",
+    body: "Your personal brand already exists. The question is whether somebody can understand it. We will work on how your experiences, interests, voice, goals, and work fit together so your LinkedIn, CV, portfolio, content, and introduction tell the same story.",
+    points: [
+      "Personal positioning",
+      "LinkedIn",
+      "CV",
+      "Portfolio",
+      "Bio and headline",
+      "Content pillars",
+      "Public image",
+      "Messaging",
+      "Opportunity alignment",
+    ],
+    cta: "Build My Brand",
   },
   {
     id: "public-speaking",
     title: "Public Speaking & Communication",
-    who: "Youth preparing a talk, a panel, a hosting role, or another spoken conversation.",
-    problem: "A clear idea can fall apart once it has to be spoken aloud.",
-    included:
-      "Practice on structure, delivery, and how you hold a conversation.",
+    price: "Starting from $600 USD / engagement",
+    body: "Speaking is not simply knowing what to say. It is knowing what the room needs to feel when you say it. I work on selected speaking, hosting, MCing, moderation, presentation, and communication engagements. Pricing depends on the event, preparation required, location, format, duration, and scope.",
+    points: [
+      "Event MCing",
+      "Public speaking",
+      "Moderation",
+      "Panels",
+      "Hosting",
+      "Presentations",
+      "Campaign and event communication",
+    ],
+    note: "Minimum engagement: $600 USD.",
+    cta: "Request Speaking Availability",
   },
   {
     id: "research-mentorship",
     title: "Research Mentorship",
-    who: "Students who want to learn how to research, write, and revise their own work.",
-    problem:
-      "Method, structure, and revision are skills, and they are learned by doing the work yourself.",
-    included: "Mentoring, editing, and education on the research process.",
-    disclaimer:
-      "This is mentoring, editing, and education. It is not selling papers or completing assessed work for students.",
+    price: "$100 USD / hour",
+    body: "Research can feel overwhelming because every answer seems to create five new questions. This is mentorship for students who want to become stronger researchers while still doing their own work.",
+    points: [
+      "Research questions",
+      "Structure",
+      "Methodology brainstorming",
+      "Literature-review strategy",
+      "Research organization",
+      "Academic presentation",
+      "Poster preparation",
+      "Revision and feedback",
+      "Research communication",
+    ],
+    note: "I do not write assessed academic work on someone else's behalf.",
+    cta: "Book Research Mentorship",
   },
   {
     id: "content-storytelling",
     title: "Content & Storytelling",
-    who: "Youth making essays, video, social posts, or other stories they want people to follow.",
-    problem:
-      "A story loses people when the point, the structure, or the voice is unclear.",
-    included:
-      "Guidance on story shape, scripting, and telling the work in your own voice.",
+    price: "$50 USD / hour",
+    body: "A good idea can disappear completely when the story around it is weak. I help individuals, creators, youth projects, and brands turn ideas into content people can actually understand, remember, and care about.",
+    points: [
+      "Content strategy",
+      "Story development",
+      "Scripts",
+      "Hooks",
+      "Campaign concepts",
+      "Reels",
+      "Messaging",
+      "Creative direction",
+      "Editorial planning",
+    ],
+    cta: "Build the Story",
+  },
+  {
+    id: "content-creation",
+    title: "Content Creation With Niney",
+    price: "Starting from $200 USD / piece",
+    body: "If you want me personally involved in creating, scripting, presenting, filming, or developing the content, pricing begins at $200 USD and depends on the concept, production requirements, location, editing, usage, and deliverables.",
+    points: ["Scripting", "Presenting", "Filming", "Creative development"],
+    cta: "Request Content Creation",
   },
 ];
 
@@ -100,128 +137,67 @@ export default function Nymp() {
       <div className="container">
         <PageHeader
           title="The Niney Yassin Mentorship Program"
-          subtitle="A youth talent and opportunity accelerator, created for youth by youth, inside the Niney Yassin brand."
+          subtitle="You do not need to have everything figured out. You need somewhere to start."
         />
 
-        <Reveal className="text-center pb-16">
-          <p className="font-display text-4xl md:text-5xl text-gold mb-4">NYMP</p>
-          <p className="text-muted-foreground text-body-md max-w-2xl mx-auto">
-            NYMP is promoted through Niney's own platforms. There is no separate NYMP brand site.
+        <Reveal className="mx-auto max-w-3xl pb-16 text-center">
+          <p className="text-body-lg text-primary/85">
+            NYMP helps young people turn ambition into direction, direction into skills, skills into proof, and proof into opportunities.
+          </p>
+          <p className="mt-6 text-body-md text-muted-foreground">
+            Whether you are applying for something, building your first serious project, trying to understand your personal brand, preparing to speak in front of a room, or simply wondering what your next move should be, the goal is the same:
+          </p>
+          <p className="mt-6 font-display text-3xl text-primary">
+            leave with something clearer than what you came in with.
+          </p>
+          <Button asChild className="mt-8 bg-gold text-burgundy-900 hover:bg-gold/90">
+            <a href="#sessions">
+              Find Your Session
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+          <p className="mt-6 font-sans text-xs uppercase tracking-[0.22em] text-gold">
+            Direction → Skills → Proof → Opportunities
           </p>
         </Reveal>
 
-        <section className="pb-20">
-          <SectionTitle
-            title="The path"
-            subtitle="Four steps, in order."
-          />
-          <Reveal variant="stagger" className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {path.map((step, index) => (
-              <div
-                key={step.title}
-                className="card-bordered p-6 text-center hover-glow transition-all"
-              >
-                <p className="text-gold font-display text-sm mb-3">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="font-display text-xl text-primary mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground text-body-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            ))}
-          </Reveal>
-        </section>
-
-        <Reveal as="section" className="max-w-3xl mx-auto pb-16">
-          <div className="card-bordered p-6 md:p-8">
-            <h2 className="font-display text-xl text-primary mb-3">
-              Booking a paid session
-            </h2>
-            <p className="text-muted-foreground text-body-md leading-relaxed">
-              Booking for paid work follows this order:{" "}
-              <Link
-                to="/contact?inquiry=NYMP"
-                className="text-gold underline underline-offset-4 hover:text-gold/80"
-              >
-                choose the service, then pay, then book
-              </Link>
-              . The payment step is not connected yet. Send the inquiry and name the session you want.
-            </p>
-          </div>
-        </Reveal>
-
-        <section className="pb-8">
-          <SectionTitle
-            title="Individual sessions"
-            subtitle="Each session is arranged on its own. Timeline and price are confirmed with you."
-          />
-          <div className="max-w-3xl mx-auto space-y-8">
+        <section id="sessions" className="scroll-mt-28 pb-20">
+          <div className="mx-auto max-w-3xl space-y-8">
             {offers.map((offer) => (
               <Reveal as="section" key={offer.id} id={offer.id} className="scroll-mt-28">
-                <article className="service-card">
-                  <h3 className="font-display text-2xl text-primary mb-6">
-                    {offer.title}
-                  </h3>
-
-                  <div className="space-y-4 mb-6">
-                    <div>
-                      <p className="text-sm text-gold mb-1">Who it is for</p>
-                      <p className="text-muted-foreground text-body-sm leading-relaxed">
-                        {offer.who}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gold mb-1">The problem</p>
-                      <p className="text-muted-foreground text-body-sm leading-relaxed">
-                        {offer.problem}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gold mb-1">What is included</p>
-                      <p className="text-muted-foreground text-body-sm leading-relaxed">
-                        {offer.included}
-                      </p>
-                    </div>
+                <article className="border border-border p-6 md:p-10">
+                  <p className="font-sans text-xs uppercase tracking-[0.22em] text-gold">{offer.price}</p>
+                  <h2 className="mt-3 font-display text-3xl text-primary">{offer.title}</h2>
+                  <p className="mt-4 text-body-md text-muted-foreground">{offer.body}</p>
+                  <ul className="mt-6 space-y-2 text-body-sm text-primary/85">
+                    {offer.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  {offer.note ? (
+                    <p className="mt-6 text-body-sm text-primary">{offer.note}</p>
+                  ) : null}
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <Button asChild className="bg-gold text-burgundy-900 hover:bg-gold/90">
+                      <Link to={contactLink(offer.title)}>
+                        {offer.cta}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="border-primary/40 text-primary">
+                      <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">
+                        Ask Me on Instagram
+                      </a>
+                    </Button>
                   </div>
-
-                  {offer.disclaimer && (
-                    <p className="text-primary text-body-sm leading-relaxed mb-6 p-4 rounded-lg bg-gold/10 border border-gold/30">
-                      {offer.disclaimer}
-                    </p>
-                  )}
-
-                  <div className="flex flex-wrap gap-4 text-sm mb-6">
-                    <span className="category-chip">{sessionTimeline}</span>
-                    {/* EGP prices arrive later */}
-                    <span className="text-gold">{sessionPrice}</span>
-                  </div>
-
-                  <Button
-                    asChild
-                    className="bg-gold text-burgundy-900 hover:bg-gold/90"
-                  >
-                    <Link to={contactLink(offer.title)}>
-                      Request this session
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
                 </article>
               </Reveal>
             ))}
           </div>
-        </section>
-
-        <Reveal as="section" className="max-w-3xl mx-auto pb-20 text-center">
-          <h2 className="font-display text-xl text-primary mb-3">
-            Packages, workshops, and cohorts
-          </h2>
-          <p className="text-muted-foreground text-body-md">
-            Packages, workshops, and cohorts come later.
+          <p className="mx-auto mt-10 max-w-3xl text-center text-body-sm text-muted-foreground">
+            DM “NYMP” on Instagram and tell me what you are working on. Prices stay on this page. Checkout converts from the USD price.
           </p>
-        </Reveal>
+        </section>
       </div>
     </Layout>
   );

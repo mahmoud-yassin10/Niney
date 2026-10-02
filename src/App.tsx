@@ -19,6 +19,7 @@ const WorkWithMe = lazy(() => import("./pages/WorkWithMe"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const AthleticJourney = lazy(() => import("./pages/AthleticJourney"));
 
 function LegacyWorkRedirect() {
   const { id } = useParams();
@@ -121,8 +122,9 @@ const AppRoutes = () => {
             <Route path="/portfolio" element={<Navigate to="/work" replace />} />
             <Route path="/portfolio/:id" element={<LegacyWorkRedirect />} />
             <Route path="/nymp" element={<Nymp />} />
-            <Route path="/writing" element={<Blog />} />
-            <Route path="/blog" element={<Navigate to="/writing" replace />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/writing" element={<Navigate to="/blog" replace />} />
+            <Route path="/athletic-journey" element={<AthleticJourney />} />
             <Route path="/research" element={<Research />} />
             <Route path="/work-with-me" element={<WorkWithMe />} />
             <Route path="/services" element={<Navigate to="/work-with-me" replace />} />

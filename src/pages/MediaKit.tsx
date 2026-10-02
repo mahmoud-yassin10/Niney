@@ -12,7 +12,7 @@ import nineyImage2 from "@/assets/niney-4.jpeg";
 
 const achievements = [
   "Founder of Fem Plus Magazine and Resilience Foundation",
-  "Media Director for Arab Women Hackathon (500+ participants)",
+  "Deputy CEO, Yalla Success",
   "Certified TV Host (trained by Ramy Radwan)",
   "Yale Young African Scholars 2025 Cohort",
   "Lumiere Research Program, full scholarship",
