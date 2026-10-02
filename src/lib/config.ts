@@ -2,9 +2,12 @@
 
 export const siteConfig = {
   name: "Niney Yassin",
-  title: "TV Host & Voice Artist • Media & Communications Strategist",
-  tagline: "I help brands and people sound unforgettable—on camera, on stage, and online.",
-  email: "nineyyassin@gmail.com",
+  mark: "NY",
+  // Provisional brand language. Replace when the final headline and bios arrive.
+  title: "Political science journalist and media strategist",
+  tagline:
+    "Journalism, politics, media, and youth leadership, held in one body of work.",
+  email: "Niney_yassin@aucegypt.edu",
   phone: "01126441123",
   location: "Cairo, Egypt",
   
@@ -41,24 +44,50 @@ export const siteConfig = {
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
+  { label: "Work", href: "/work" },
+  { label: "NYMP", href: "/nymp" },
+  { label: "Writing", href: "/writing" },
   { label: "Research", href: "/research" },
-  { label: "Media Kit", href: "/media-kit" },
+  { label: "Work With Me", href: "/work-with-me" },
   { label: "Contact", href: "/contact" },
 ];
 
-// Portfolio categories for filtering
+export const footerLinks = [
+  ...navItems,
+  { label: "Press Kit", href: "/press" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+];
+
+// Work filters. Change labels here. Pages should import this list.
 export const portfolioCategories = [
   "All",
-  "Media Strategy",
-  "Hosting/MC",
-  "Voiceover",
-  "Acting",
-  "Writing",
+  "Journalism & Media",
   "Research",
-  "Leadership",
+  "Speaking & Hosting",
+  "Leadership & Impact",
+  "Creative",
+] as const;
+
+export const writingCategories = [
+  { id: "essays", label: "Essays", isPremium: false },
+  { id: "politics", label: "Politics & International Affairs", isPremium: false },
+  { id: "books", label: "Books & Reading", isPremium: false },
+  { id: "reflections", label: "Reflections", isPremium: false },
+  { id: "poetry", label: "Poetry", isPremium: true },
+  { id: "creative", label: "Creative Writing", isPremium: false },
+  { id: "members", label: "Members", isPremium: true },
+] as const;
+
+export const inquiryTypes = [
+  "General",
+  "Media/Press",
+  "Speaking/Hosting",
+  "Professional Services",
+  "NYMP",
+  "Research",
+  "Partnerships",
+  "Team/Applications",
 ] as const;
 
 // Service categories

@@ -7,6 +7,13 @@ import { ImageWithSkeleton } from "@/components/shared/ImageWithSkeleton";
 import { siteConfig } from "@/lib/config";
 import heroImage from "@/assets/niney-2.jpeg";
 
+// Provisional copy. Replace when final brand language arrives.
+const heroActions = {
+  explore: "Explore My Work",
+  collaborate: "Work With Me",
+  cv: "Download CV",
+};
+
 export function HeroSection() {
   return (
     <section className="min-h-screen relative flex items-center floating-icons-bg overflow-hidden">
@@ -44,24 +51,23 @@ export function HeroSection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center lg:justify-start mb-8">
               <Button
                 asChild
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-gold hover:text-burgundy-900 font-body text-base px-8"
               >
-                <Link to="/contact">
-                  Hire Me
+                <Link to="/work">
+                  {heroActions.explore}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button
                 asChild
-                variant="outline"
                 size="lg"
-                className="border-primary/50 text-primary hover:bg-primary/10 font-body text-base px-8"
+                className="bg-primary text-primary-foreground hover:bg-gold hover:text-burgundy-900 font-body text-base px-8"
               >
-                <Link to="/portfolio">See Projects</Link>
+                <Link to="/work-with-me">{heroActions.collaborate}</Link>
               </Button>
               <Button
                 asChild
@@ -71,31 +77,25 @@ export function HeroSection() {
               >
                 <a href={siteConfig.cvUrl} download>
                   <Download className="mr-2 h-4 w-4" />
-                  Download CV
+                  {heroActions.cv}
                 </a>
               </Button>
             </div>
 
             {/* Social Icons */}
-            <SocialIcons />
+            <SocialIcons className="justify-center lg:justify-start" />
           </Reveal>
 
           {/* Hero Image */}
           <Reveal className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Glow effect behind */}
-              <div className="absolute inset-0 rounded-full bg-gold/20 blur-3xl transform scale-90" />
-
-              {/* Image frame */}
-              <ImageWithSkeleton
-                src={heroImage}
-                alt={siteConfig.name}
-                loading="eager"
-                decoding="async"
-                className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[380px] lg:h-[380px] rounded-full hero-image-frame"
-                imgClassName="object-cover object-top"
-              />
-            </div>
+            <ImageWithSkeleton
+              src={heroImage}
+              alt={siteConfig.name}
+              loading="eager"
+              decoding="async"
+              className="w-full max-w-[460px] aspect-[4/5]"
+              imgClassName="object-cover object-[center_20%]"
+            />
           </Reveal>
         </div>
       </div>

@@ -6,28 +6,46 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Calendar, Mail, MapPin, Phone, Send } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { SocialIcons } from "@/components/ui/SocialIcons";
-import { siteConfig } from "@/lib/config";
+import { inquiryTypes, siteConfig } from "@/lib/config";
 import { toast } from "@/hooks/use-toast";
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [inquiry, setInquiry] = useState<string>(inquiryTypes[0]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    const data = new FormData(e.currentTarget);
+    const name = String(data.get("name") ?? "");
+    const email = String(data.get("email") ?? "");
+    const subject = String(data.get("subject") ?? "");
+    const message = String(data.get("message") ?? "");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (!inquiry) {
+      toast({
+        title: "Choose an inquiry type",
+        description: "Select what this message is about before sending.",
+      });
+      return;
+    }
 
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Inquiry: ${inquiry}`,
+      "",
+      message,
+    ].join("\n");
 
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(`[${inquiry}] ${subject}`)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -35,23 +53,21 @@ export default function Contact() {
       <div className="container">
         <PageHeader
           title="Contact"
-          subtitle="Let's create something unforgettable together."
+          subtitle="Press, speaking, research, NYMP, and everything else starts here."
         />
 
         <div className="max-w-5xl mx-auto pb-20">
           <Reveal variant="stagger" className="grid md:grid-cols-2 gap-12">
-            {/* Contact Info */}
             <div className="space-y-8">
               <div>
                 <h3 className="font-display text-xl text-primary mb-4">
                   Get in Touch
                 </h3>
                 <p className="text-muted-foreground text-body-md">
-                  Whether you need a host, a voice, a strategist, or a mentor—I'd love to hear from you. Let's discuss how we can work together.
+                  Write with what you need. The form opens an email to {siteConfig.email}.
                 </p>
               </div>
 
-              {/* Contact Details */}
               <div className="space-y-4">
                 <a
                   href={`mailto:${siteConfig.email}`}
@@ -90,30 +106,15 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Calendly */}
               <div className="p-6 rounded-xl card-bordered">
                 <h4 className="font-display text-lg text-primary mb-2">
-                  Book a Call
+                  Discovery calls
                 </h4>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Schedule a consultation or discovery call at your convenience.
+                <p className="text-muted-foreground text-sm">
+                  Paid booking is not open yet. A discovery call, when offered, is separate from a paid session and will use a new calendar link.
                 </p>
-                <Button
-                  asChild
-                  className="w-full bg-gold text-burgundy-900 hover:bg-gold/90"
-                >
-                  <a
-                    href={siteConfig.calendlyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Calendar className="mr-2 h-4 w-4" />
-                    Open Calendly
-                  </a>
-                </Button>
               </div>
 
-              {/* Social */}
               <div>
                 <h4 className="font-display text-lg text-primary mb-4">
                   Follow Me
@@ -122,7 +123,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Contact Form */}
             <div className="card-bordered p-6 md:p-8">
               <h3 className="font-display text-xl text-primary mb-6">
                 Send a Message
@@ -153,6 +153,25 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
+                  <Label htmlFor="inquiry">Inquiry type</Label>
+                  <Select value={inquiry} onValueChange={setInquiry}>
+                    <SelectTrigger
+                      id="inquiry"
+                      className="bg-secondary/50 border-border"
+                    >
+                      <SelectValue placeholder="Select an inquiry type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {inquiryTypes.map((type) => (
+                        <SelectItem key={type} value={type}>
+                          {type}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
                   <Label htmlFor="subject">Subject</Label>
                   <Input
                     id="subject"
@@ -178,16 +197,9 @@ export default function Contact() {
                 <Button
                   type="submit"
                   className="w-full bg-primary text-primary-foreground hover:bg-gold hover:text-burgundy-900"
-                  disabled={isSubmitting}
                 >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-4 w-4" />
-                      Send Message
-                    </>
-                  )}
+                  <Send className="mr-2 h-4 w-4" />
+                  Email {siteConfig.email}
                 </Button>
               </form>
             </div>

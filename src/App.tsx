@@ -4,18 +4,26 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { PageSkeleton } from "@/components/shared/PageSkeleton";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation, useParams } from "react-router-dom";
 
 const Index = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const PortfolioDetail = lazy(() => import("./pages/PortfolioDetail"));
-const Services = lazy(() => import("./pages/Services"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Research = lazy(() => import("./pages/Research"));
 const MediaKit = lazy(() => import("./pages/MediaKit"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Nymp = lazy(() => import("./pages/Nymp"));
+const WorkWithMe = lazy(() => import("./pages/WorkWithMe"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+
+function LegacyWorkRedirect() {
+  const { id } = useParams();
+  return <Navigate to={`/work/${id ?? ""}`} replace />;
+}
 
 const queryClient = new QueryClient();
 
@@ -108,13 +116,21 @@ const AppRoutes = () => {
           <Routes location={displayLocation}>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/portfolio/:id" element={<PortfolioDetail />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/work" element={<Portfolio />} />
+            <Route path="/work/:id" element={<PortfolioDetail />} />
+            <Route path="/portfolio" element={<Navigate to="/work" replace />} />
+            <Route path="/portfolio/:id" element={<LegacyWorkRedirect />} />
+            <Route path="/nymp" element={<Nymp />} />
+            <Route path="/writing" element={<Blog />} />
+            <Route path="/blog" element={<Navigate to="/writing" replace />} />
             <Route path="/research" element={<Research />} />
-            <Route path="/media-kit" element={<MediaKit />} />
+            <Route path="/work-with-me" element={<WorkWithMe />} />
+            <Route path="/services" element={<Navigate to="/work-with-me" replace />} />
+            <Route path="/press" element={<MediaKit />} />
+            <Route path="/media-kit" element={<Navigate to="/press" replace />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

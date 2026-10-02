@@ -1,30 +1,62 @@
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mic, Camera, Users, Pen } from "lucide-react";
+import { ArrowRight, Landmark, Clapperboard, Mic, Users } from "lucide-react";
 import { SectionTitle } from "@/components/shared/SectionTitle";
 import { Reveal } from "@/components/shared/Reveal";
 
+// Provisional copy. Replace when final brand language arrives.
 const highlights = [
   {
-    icon: Mic,
-    title: "TV Host & Voice Artist",
-    description: "Certified TV host trained by Ramy Radwan. Professional voiceover for film, ads, and digital platforms.",
+    icon: Landmark,
+    title: "Politics, Journalism & Research",
+    description:
+      "Political communication, international affairs, research, interviewing, and journalism.",
   },
   {
-    icon: Camera,
-    title: "Media Director",
-    description: "Led media strategy for Arab Women Hackathon with 500+ participants. Expert in content creation and storytelling.",
+    icon: Clapperboard,
+    title: "Media, Marketing & Storytelling",
+    description:
+      "Media strategy, content strategy, filmmaking, campaigns, digital storytelling, and marketing.",
+  },
+  {
+    icon: Mic,
+    title: "Speaking, Hosting & Communication",
+    description:
+      "Public speaking, event MC work, hosting, moderation, voice work, and on-camera communication.",
   },
   {
     icon: Users,
-    title: "Founder & Leader",
-    description: "Founded Fem Plus Magazine and Resilience Foundation. Passionate about empowering women and youth.",
+    title: "Leadership, Projects & Youth Impact",
+    description:
+      "Programs, initiatives, mentorship, community building, and youth leadership.",
+  },
+];
+
+const featuredWork = [
+  {
+    id: "fem-plus",
+    label: "Case study",
+    title: "Fem Plus Magazine",
+    description:
+      "A platform for women's storytelling, media, and social advocacy, and for authentic female voices in the Arab world.",
+    year: "2025-Present",
   },
   {
-    icon: Pen,
-    title: "Writer & Poet",
-    description: "Currently writing memoir 'On My Way' and poetry collection. Screenwriter and storyteller.",
+    id: "resilience-foundation",
+    label: "Parent project",
+    title: "Resilience Foundation",
+    description:
+      "Global awareness and mentorship for Palestinian youth. The Resilience film sits inside this work.",
+    year: "2025-Present",
+  },
+  {
+    id: "yalla-success",
+    label: "Media direction",
+    title: "Yalla Success / Arab Women Hackathon",
+    description:
+      "Led media strategy for the Arab Women Hackathon, with 500+ participants. Mentored 35 girls on content creation, scriptwriting, and digital presence.",
+    year: "2025-Present",
   },
 ];
 
@@ -38,20 +70,17 @@ export default function Index() {
         <div className="container">
           <SectionTitle
             title="What I Do"
-            subtitle="From hosting stages to founding movements, I bring stories to life."
+            subtitle="Four areas of practice: politics, media, speaking, and youth leadership."
           />
 
           <Reveal variant="stagger" className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {highlights.map((item, idx) => (
+            {highlights.map((item) => (
               <div
                 key={item.title}
-                className="group card-bordered p-6 text-center hover:bg-secondary transition-all duration-300 hover-glow"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className="card-bordered p-8 md:p-10 text-left"
               >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                  <item.icon className="w-7 h-7 text-gold" />
-                </div>
-                <h3 className="font-display text-lg text-primary mb-2">
+                <item.icon className="w-6 h-6 text-gold/70 mb-6" strokeWidth={1.5} />
+                <h3 className="font-display text-lg text-primary mb-3">
                   {item.title}
                 </h3>
                 <p className="text-muted-foreground text-body-sm">
@@ -67,53 +96,35 @@ export default function Index() {
       <section className="py-20 md:py-28">
         <div className="container">
           <SectionTitle
-            title="Featured Projects"
-            subtitle="Initiatives and creative work that make an impact."
+            title="Featured Work"
+            subtitle="Three flagship projects from the wider body of work."
           />
 
           <Reveal variant="stagger" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Fem Plus Magazine",
-                category: "Leadership",
-                description: "Empowering women through storytelling, media, and social advocacy.",
-                year: "2025",
-              },
-              {
-                title: "Resilience Foundation",
-                category: "Leadership",
-                description: "Global awareness and mentorship for Palestinian youth.",
-                year: "2025",
-              },
-              {
-                title: "The Resilience Short Film",
-                category: "Acting",
-                description: "Wrote, directed, and acted in this film submitted to Cairo International Film Festival.",
-                year: "2025",
-              },
-            ].map((project) => (
-              <div
-                key={project.title}
-                className="group card-bordered p-6 hover:bg-secondary transition-all hover-glow"
+            {featuredWork.map((project) => (
+              <Link
+                key={project.id}
+                to={`/work/${project.id}`}
+                className="group card-bordered block p-8 md:p-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
               >
-                <span className="category-chip mb-4">{project.category}</span>
-                <h3 className="font-display text-xl text-primary mb-2 group-hover:text-gold transition-colors">
+                <span className="category-chip mb-4">{project.label}</span>
+                <h3 className="font-display text-xl text-primary mb-3">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground text-body-sm mb-4">
                   {project.description}
                 </p>
                 <span className="text-muted-foreground text-sm">{project.year}</span>
-              </div>
+              </Link>
             ))}
           </Reveal>
 
           <Reveal className="text-center mt-10">
             <Link
-              to="/portfolio"
+              to="/work"
               className="inline-flex items-center text-gold hover:underline font-body"
             >
-              View all projects
+              View all work
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Reveal>
@@ -125,16 +136,16 @@ export default function Index() {
         <div className="container">
           <Reveal className="max-w-3xl mx-auto text-center light-section p-8 md:p-12 rounded-2xl bg-off-white">
             <h2 className="font-display text-burgundy-900 mb-4">
-              Let's Create Something Unforgettable
+              Bring a project
             </h2>
             <p className="text-warm-gray/80 text-body-lg mb-8">
-              Whether you need a host, a voice, a strategist, or a mentor—I'm here to help your story shine.
+              Speaking, media, research, and longer collaborations are gathered in one place.
             </p>
             <Link
-              to="/contact"
+              to="/work-with-me"
               className="inline-flex items-center justify-center px-8 py-4 bg-burgundy-900 text-off-white rounded-xl font-body hover:bg-burgundy-700 transition-colors"
             >
-              Get in Touch
+              Work With Me
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Reveal>

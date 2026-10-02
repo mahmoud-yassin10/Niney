@@ -1,3 +1,4 @@
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Linkedin, Instagram, Youtube } from "lucide-react";
 import { siteConfig, navItems } from "@/lib/config";
@@ -14,7 +15,16 @@ const TikTokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const footerNav = [
+  ...navItems,
+  { label: "Press Kit", href: "/press" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+];
+
 export function Footer() {
+  const [newsletterNote, setNewsletterNote] = useState(false);
+
   const socialLinks = [
     {
       icon: Linkedin,
@@ -38,25 +48,35 @@ export function Footer() {
     },
   ];
 
+  const handleNewsletter = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setNewsletterNote(true);
+  };
+
   return (
     <footer className="bg-burgundy-900 border-t border-border py-12 md:py-16">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="font-display text-2xl text-primary">
-              {siteConfig.name}
+            <Link
+              to="/"
+              aria-label="Niney Yassin"
+              className="inline-block font-display text-2xl text-primary hover:text-gold transition-colors"
+            >
+              {siteConfig.mark}
             </Link>
+            <p className="font-body text-sm text-primary">{siteConfig.name}</p>
             <p className="text-muted-foreground text-body-sm max-w-xs">
-              {siteConfig.title}
+              {siteConfig.tagline}
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div className="space-y-4">
-            <h4 className="font-display text-lg text-primary">Quick Links</h4>
+            <h4 className="font-display text-lg text-primary">Navigation</h4>
             <nav className="grid grid-cols-2 gap-2">
-              {navItems.slice(0, 6).map((item) => (
+              {footerNav.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
@@ -68,9 +88,9 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Contact & Social */}
+          {/* Contact, socials, newsletter */}
           <div className="space-y-4">
-            <h4 className="font-display text-lg text-primary">Connect</h4>
+            <h4 className="font-display text-lg text-primary">Contact</h4>
             <div className="space-y-2 text-muted-foreground text-body-sm">
               <p>
                 <a
@@ -82,20 +102,59 @@ export function Footer() {
               </p>
               <p>{siteConfig.location}</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center text-primary hover:bg-gold hover:text-burgundy-900 transition-all hover-glow"
+                  className="text-muted-foreground hover:text-gold transition-colors"
                   title={social.label}
+                  aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
+
+            <form onSubmit={handleNewsletter} className="space-y-2 pt-2">
+              <label
+                htmlFor="notes-from-niney"
+                className="font-display text-lg text-primary block"
+              >
+                Notes from Niney
+              </label>
+              <div className="flex gap-2">
+                <input
+                  id="notes-from-niney"
+                  type="email"
+                  name="email"
+                  required
+                  autoComplete="email"
+                  placeholder="Email address"
+                  className="h-10 min-w-0 flex-1 rounded-md border border-border bg-background px-3 font-body text-sm text-primary placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                />
+                <button
+                  type="submit"
+                  className="h-10 shrink-0 rounded-md bg-gold px-4 font-body text-sm text-burgundy-900 hover:bg-gold/90 transition-colors"
+                >
+                  Send
+                </button>
+              </div>
+              {newsletterNote && (
+                <p className="text-body-sm text-muted-foreground" role="status">
+                  This list is not connected yet. Write to{" "}
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-gold hover:underline"
+                  >
+                    {siteConfig.email}
+                  </a>{" "}
+                  if you want notes from Niney.
+                </p>
+              )}
+            </form>
           </div>
         </div>
 

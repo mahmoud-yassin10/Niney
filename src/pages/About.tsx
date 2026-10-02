@@ -1,94 +1,113 @@
+import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { SectionTitle } from "@/components/shared/SectionTitle";
 import { InfoCard } from "@/components/shared/InfoCard";
 import { Reveal } from "@/components/shared/Reveal";
 import { ImageWithSkeleton } from "@/components/shared/ImageWithSkeleton";
+import { Button } from "@/components/ui/button";
 import nineyImage from "@/assets/niney-3.jpeg";
 
-const pillars = [
+const builds = [
   {
     title: "Fem Plus Magazine",
     role: "Founder",
-    year: "2025–Present",
-    description: "Empowering women through storytelling, media, and social advocacy. Building a platform for authentic female voices.",
+    year: "2025-Present",
+    description:
+      "Empowering women through storytelling, media, and social advocacy. Building a platform for authentic female voices.",
     category: "Leadership",
   },
   {
     title: "Resilience Foundation",
     role: "Founder",
-    year: "2025–Present",
-    description: "Global awareness and mentorship for Palestinian youth. Created 'The Resilience' short film, submitted to Cairo International Film Festival.",
+    year: "2025-Present",
+    description:
+      "Global awareness and mentorship for Palestinian youth. Created 'The Resilience' short film, submitted to Cairo International Film Festival.",
     category: "Leadership",
-  },
-  {
-    title: "Yalla Success - Arab Women Hackathon",
-    role: "Media Director",
-    year: "2025–Present",
-    description: "Led media strategy for the hackathon with 500+ participants. Mentored 35 girls on content creation and script writing.",
-    category: "Media Strategy",
-  },
-  {
-    title: "Event MC & Public Speaker",
-    role: "Host",
-    year: "2025",
-    description: "Hosted Squash National Championship 2025 in Port Said, NIS events, and participated in speech competitions.",
-    category: "Hosting/MC",
-  },
-  {
-    title: "Voiceover Artist & Screenwriter",
-    role: "Creative",
-    year: "Ongoing",
-    description: "Developed and performed written content for film and online platforms. Professional voice work for various media.",
-    category: "Voiceover",
-  },
-  {
-    title: "Actress & Performer",
-    role: "Talent",
-    year: "Ongoing",
-    description: "Finalist in casting for 'Kamel El 3adad.' Attended The Star Acting workshop in Port Said.",
-    category: "Acting",
   },
 ];
 
-const education = [
+const cares = [
+  {
+    title: "Journalism and media",
+    description:
+      "How a story is framed, and what that frame lets a public understand. Hosting, writing, and research keep returning to that question.",
+  },
+  {
+    title: "Politics",
+    description:
+      "Public life, institutions, and the narratives that travel with conflict. The Lumiere project examines media framing and legal and political narratives in international coverage.",
+  },
+  {
+    title: "Storytelling and youth leadership",
+    description:
+      "Women and young people as the authors of their own stories. Fem Plus Magazine and the Resilience Foundation are rooms built for that.",
+  },
+];
+
+const milestones = [
+  {
+    title: "Yalla Success - Arab Women Hackathon",
+    subtitle: "Media Director",
+    year: "2025-Present",
+    category: "Media Strategy",
+    description:
+      "Led media strategy for the hackathon with 500+ participants. Mentored 35 girls on content creation and script writing.",
+  },
+  {
+    title: "Event MC & Public Speaker",
+    subtitle: "Host",
+    year: "2025",
+    category: "Hosting",
+    description:
+      "Hosted Squash National Championship 2025 in Port Said, NIS events, and participated in speech competitions.",
+  },
+  {
+    title: "Actress & Performer",
+    subtitle: "Talent",
+    year: "Ongoing",
+    category: "Acting",
+    description:
+      "Finalist in casting for 'Kamel El 3adad.' Attended The Star Acting workshop in Port Said.",
+  },
   {
     title: "Yale Young African Scholars (YYAS)",
     subtitle: "2025 Cohort",
     category: "Program",
-    description: "College prep, global leadership, and academic development program.",
+    description:
+      "College prep, global leadership, and academic development program.",
   },
   {
     title: "Lumiere Research Program",
-    subtitle: "Full Scholarship • 2025",
+    subtitle: "Full scholarship, 2025",
     category: "Research",
-    description: "Individual research project examining media framing and legal/political narratives in international conflict coverage.",
+    description:
+      "Individual research project examining media framing and legal and political narratives in international conflict coverage.",
   },
   {
     title: "AUC Media Innovation Hub",
     subtitle: "2024",
     category: "Bootcamp",
-    description: "Storytelling and digital content creation at the American University in Cairo.",
+    description:
+      "Storytelling and digital content creation at the American University in Cairo.",
   },
   {
     title: "BUE Politics & Business Simulation",
     subtitle: "2024",
     category: "Bootcamp",
-    description: "Politics, Economics, and Business Simulation of British Parliament & SDG strategy.",
+    description:
+      "Politics, Economics, and Business Simulation of British Parliament and SDG strategy.",
   },
-];
-
-const certifications = [
   {
     title: "Certified TV Host",
     subtitle: "Trained by Ramy Radwan",
-    year: "Jan–Feb 2024",
+    year: "Jan-Feb 2024",
     category: "Certification",
   },
   {
     title: "Certified Digital Marketer",
     subtitle: "Innovation Area",
-    year: "Feb–May 2024",
+    year: "Feb-May 2024",
     category: "Certification",
   },
   {
@@ -97,12 +116,19 @@ const certifications = [
     year: "2024",
     category: "Certification",
   },
-];
-
-const languages = [
-  { name: "English", level: "Fluent", detail: "IELTS 7.5 (C1)" },
-  { name: "Arabic", level: "Native", detail: "" },
-  { name: "German", level: "A1", detail: "Goethe-Institut Certificate" },
+  {
+    title: "Karate",
+    subtitle: "Black belt, 14 years of training",
+    category: "Sport",
+    description: "5th place, National Championship (Giza Zone).",
+  },
+  {
+    title: "Marimba",
+    subtitle: "Marimba and percussion",
+    category: "Music",
+    description:
+      "Award-winning duet performer, before the Minister of Music.",
+  },
 ];
 
 export default function About() {
@@ -110,12 +136,12 @@ export default function About() {
     <Layout>
       <div className="container">
         <PageHeader
-          title="About Me"
-          subtitle="Founder, media strategist, and storyteller passionate about amplifying voices that matter."
+          title="About"
+          subtitle="Journalism, politics, media, storytelling, research, and youth leadership, held in one life."
         />
 
-        {/* Bio Section */}
         <section className="pb-20">
+          <SectionTitle title="Opening" />
           <Reveal variant="stagger" className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <ImageWithSkeleton
@@ -124,53 +150,69 @@ export default function About() {
                 className="aspect-[4/5] rounded-2xl card-bordered"
                 imgClassName="object-cover"
               />
-              {/* Decorative element */}
               <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-gold/10 -z-10" />
             </div>
 
             <div className="space-y-6">
               <p className="text-body-lg text-primary leading-relaxed">
-                I'm <span className="text-gold font-display">Niney Yassin</span>, a TV host, voice artist, and media strategist from Cairo, Egypt. Currently a high school senior at Nermeen Ismail School with a 3.9 GPA, I've dedicated my journey to empowering voices—especially women and youth.
+                I'm <span className="text-gold font-display">Niney Yassin</span>. Journalism, politics, media, storytelling, research, and youth leadership meet in the same person.
               </p>
               <p className="text-body-md text-muted-foreground leading-relaxed">
-                As the founder of <strong>Fem Plus Magazine</strong> and <strong>Resilience Foundation</strong>, I create platforms for storytelling that matters. My work spans media directing, event hosting, voiceover artistry, screenwriting, and acting.
-              </p>
-              <p className="text-body-md text-muted-foreground leading-relaxed">
-                Beyond media, I'm a black belt in Karate (5th place in National Championship), an award-winning marimba performer, and a writer crafting my memoir "On My Way" alongside a poetry collection.
+                I write, I study how stories shape public life, and I build rooms where young people can lead. The work is one practice, with a record underneath it.
               </p>
             </div>
           </Reveal>
         </section>
 
-        {/* Experience Pillars */}
         <section className="pb-20">
           <SectionTitle
-            title="Experience & Leadership"
-            subtitle="Key roles that define my journey"
+            title="My Story"
+            subtitle="Cairo, the programs that widened the work, and the decision to build."
           />
-          <Reveal variant="stagger" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pillars.map((pillar) => (
-              <InfoCard
-                key={pillar.title}
-                title={pillar.title}
-                subtitle={pillar.role}
-                year={pillar.year}
-                category={pillar.category}
-                description={pillar.description}
-              />
+          <Reveal className="max-w-3xl mx-auto space-y-6">
+            <p className="text-body-md text-muted-foreground leading-relaxed">
+              I am from Cairo. Hosting, performance, and writing came early. So did programs that widened the map: Yale Young African Scholars in the 2025 cohort, the Lumiere Research Program on a full scholarship, a politics and business simulation, and the Media Innovation Hub at the American University in Cairo.
+            </p>
+            <p className="text-body-md text-muted-foreground leading-relaxed">
+              Fem Plus Magazine and the Resilience Foundation grew from the same wish to build rooms of my own. That work now sits beside a new chapter at university.
+            </p>
+          </Reveal>
+        </section>
+
+        <section className="pb-20">
+          <SectionTitle
+            title="What I Care About"
+            subtitle="The questions that tie the work together."
+          />
+          <Reveal variant="stagger" className="grid md:grid-cols-3 gap-6">
+            {cares.map((item) => (
+              <div
+                key={item.title}
+                className="card-bordered p-6 hover-glow transition-all"
+              >
+                <h3 className="font-display text-xl text-primary mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground text-body-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
             ))}
           </Reveal>
         </section>
 
-        {/* Education */}
         <section className="pb-20">
-          <SectionTitle title="Education & Programs" />
-          <Reveal variant="stagger" className="grid md:grid-cols-2 gap-6">
-            {education.map((item) => (
+          <SectionTitle
+            title="What I Build"
+            subtitle="Initiatives already underway."
+          />
+          <Reveal variant="stagger" className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {builds.map((item) => (
               <InfoCard
                 key={item.title}
                 title={item.title}
-                subtitle={item.subtitle}
+                subtitle={item.role}
+                year={item.year}
                 category={item.category}
                 description={item.description}
               />
@@ -178,110 +220,79 @@ export default function About() {
           </Reveal>
         </section>
 
-        {/* Certifications */}
         <section className="pb-20">
-          <SectionTitle title="Certifications" />
-          <Reveal variant="stagger" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certifications.map((cert) => (
+          <SectionTitle title="Currently" />
+          <Reveal className="max-w-3xl mx-auto">
+            {/* Provisional. The final bio will replace this paragraph. */}
+            <p className="text-body-md text-muted-foreground leading-relaxed text-center">
+              The current chapter is university. I am a student at The American University in Cairo.
+            </p>
+          </Reveal>
+        </section>
+
+        <section className="pb-20">
+          <SectionTitle
+            title="Beyond the CV"
+            subtitle="Writing, languages, and sport."
+          />
+          <Reveal variant="stagger" className="grid md:grid-cols-3 gap-6">
+            <div className="card-bordered p-6 hover-glow transition-all">
+              <h3 className="font-display text-xl text-primary mb-3">Writing</h3>
+              <p className="text-muted-foreground text-body-sm leading-relaxed">
+                A memoir in progress, "On My Way", and a poetry collection.
+              </p>
+            </div>
+            <div className="card-bordered p-6 hover-glow transition-all">
+              <h3 className="font-display text-xl text-primary mb-3">Languages</h3>
+              <ul className="space-y-2 text-muted-foreground text-body-sm">
+                <li>English, fluent. IELTS 7.5 (C1).</li>
+                <li>Arabic, native.</li>
+                <li>German, A1. Goethe-Institut certificate.</li>
+              </ul>
+            </div>
+            <div className="card-bordered p-6 hover-glow transition-all">
+              <h3 className="font-display text-xl text-primary mb-3">Sport</h3>
+              <p className="text-muted-foreground text-body-sm leading-relaxed">
+                Karate, black belt, 14 years of training. 5th place, National Championship (Giza Zone). Former volleyball and padel player.
+              </p>
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="pb-20">
+          <SectionTitle
+            title="Selected milestones"
+            subtitle="Programs, roles, and performances already on the record."
+          />
+          <Reveal variant="stagger" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {milestones.map((item) => (
               <InfoCard
-                key={cert.title}
-                title={cert.title}
-                subtitle={cert.subtitle}
-                year={cert.year}
-                category={cert.category}
+                key={item.title}
+                title={item.title}
+                subtitle={item.subtitle}
+                year={item.year}
+                category={item.category}
+                description={item.description}
               />
             ))}
           </Reveal>
         </section>
 
-        {/* Languages */}
         <section className="pb-20">
-          <SectionTitle title="Languages" />
-          <Reveal variant="stagger" className="grid sm:grid-cols-3 gap-6">
-            {languages.map((lang) => (
-              <div
-                key={lang.name}
-                className="card-bordered p-6 text-center hover-glow transition-all"
-              >
-                <h3 className="font-display text-xl text-primary mb-2">
-                  {lang.name}
-                </h3>
-                <p className="text-gold font-body">{lang.level}</p>
-                {lang.detail && (
-                  <p className="text-muted-foreground text-sm mt-1">
-                    {lang.detail}
-                  </p>
-                )}
-              </div>
-            ))}
-          </Reveal>
-        </section>
-
-        {/* Beyond Media */}
-        <section className="pb-20">
-          <SectionTitle
-            title="Beyond Media"
-            subtitle="Athletics and arts that shape who I am"
-          />
-          <Reveal variant="stagger" className="grid sm:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Karate",
-                detail: "Black Belt • 14 years training",
-                achievement: "5th place - National Championship (Giza Zone)",
-              },
-              {
-                title: "Sports",
-                detail: "Former Volleyball & Padel Player",
-                achievement: "Team sports leadership experience",
-              },
-              {
-                title: "Music",
-                detail: "Marimba & Percussionist",
-                achievement: "Award-winning duet performer before Minister of Music",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="card-bordered p-6 text-center hover-glow transition-all"
-              >
-                <h3 className="font-display text-xl text-primary mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground text-body-sm mb-2">
-                  {item.detail}
-                </p>
-                <p className="text-gold text-sm">{item.achievement}</p>
-              </div>
-            ))}
-          </Reveal>
-        </section>
-
-        {/* Skills */}
-        <section className="pb-20">
-          <SectionTitle title="Skills" />
-          <Reveal variant="stagger" className="flex flex-wrap justify-center gap-3">
-            {[
-              "Public Relations & Networking",
-              "Strategic Communication",
-              "Content Creation",
-              "Social Media Strategy",
-              "Mentorship & Coaching",
-              "Acting & Hosting",
-              "Voice Artistry",
-              "Storytelling",
-              "Scriptwriting",
-              "Memoir & Poetry",
-              "Language Fluency",
-              "Cultural Sensitivity",
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="px-4 py-2 rounded-full bg-secondary text-primary text-body-sm hover:bg-gold hover:text-burgundy-900 transition-colors cursor-default"
-              >
-                {skill}
-              </span>
-            ))}
+          <Reveal className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              asChild
+              className="bg-primary text-primary-foreground hover:bg-gold hover:text-burgundy-900"
+            >
+              <Link to="/work">Explore Work</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="border-primary/50 text-primary hover:bg-primary/10"
+            >
+              <Link to="/work-with-me">Work With Me</Link>
+            </Button>
           </Reveal>
         </section>
       </div>

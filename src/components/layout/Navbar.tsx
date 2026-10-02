@@ -27,22 +27,24 @@ export function Navbar() {
         isScrolled ? "scrolled" : ""
       }`}
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
+      <div className="container flex items-center justify-between h-16 md:h-20 px-4 md:px-5">
         {/* Logo */}
         <Link
           to="/"
+          aria-label="Niney Yassin"
+          title="Niney Yassin"
           className="font-display text-xl md:text-2xl text-primary hover:text-gold transition-colors"
         >
-          {siteConfig.name}
+          {siteConfig.mark}
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden xl:flex items-center gap-0.5">
           {navItems.map((item) => (
             <Link
               key={item.href}
               to={item.href}
-              className={`px-4 py-2 text-sm font-body transition-colors rounded-lg hover:bg-secondary/50 ${
+              className={`px-2.5 py-2 text-sm font-body whitespace-nowrap transition-colors rounded-lg hover:bg-secondary/50 ${
                 location.pathname === item.href
                   ? "text-gold"
                   : "text-primary/80 hover:text-primary"
@@ -57,7 +59,9 @@ export function Navbar() {
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden text-primary"
+          className="xl:hidden text-primary"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
@@ -70,7 +74,7 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background/98 backdrop-blur-lg border-t border-border mobile-menu">
+        <div className="xl:hidden bg-background/98 backdrop-blur-lg border-t border-border mobile-menu">
           <nav className="container py-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
