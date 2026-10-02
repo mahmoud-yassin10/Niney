@@ -47,14 +47,14 @@ export default function Research() {
       <div className="container">
         <PageHeader
           title="Research"
-          subtitle="Published work, work in progress, and proposals. Only projects already on the record are listed."
+          subtitle="Media framing, political narratives, and how conflict is covered, studied closely."
         />
 
         <section className="pb-16">
           <SectionTitle title="Published" />
           <Reveal className="max-w-3xl mx-auto text-center">
             <p className="text-muted-foreground">
-              No published papers are listed yet.
+              The first paper is in progress, below.
             </p>
           </Reveal>
         </section>
@@ -110,10 +110,10 @@ export default function Research() {
 
               <div className="mb-8 p-4 rounded-lg bg-secondary/50">
                 <h3 className="text-sm font-display text-primary mb-2">
-                  Expected Timeline
+                  Status
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Research paper expected to be completed in 2025. Updates will be posted as the project progresses.
+                  Paper in progress. Write to me if you want to follow where it goes.
                 </p>
               </div>
 

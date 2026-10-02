@@ -84,7 +84,6 @@ export default function PortfolioDetail() {
 
         <Reveal variant="stagger" className="max-w-3xl space-y-10">
           <TextSection title="Overview" body={project.overview || project.description} />
-          <TextSection title="My Role" body={project.subtitle} />
           <TextSection title="Challenge" body={project.challenge} />
           <ListSection title="What I Did" items={project.whatIDid} />
           <ListSection title="Impact" items={project.impact} />

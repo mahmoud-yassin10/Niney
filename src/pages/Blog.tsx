@@ -2,9 +2,8 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Reveal } from "@/components/shared/Reveal";
-import { Button } from "@/components/ui/button";
 import { Lock } from "lucide-react";
-import { siteConfig, writingCategories } from "@/lib/config";
+import { writingCategories } from "@/lib/config";
 
 // Existing pieces only. Public and members-only are labels, not a paywall.
 const writings = [
@@ -76,8 +75,6 @@ function categoryLabel(id: string) {
 
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
-  const membershipEnabled = siteConfig.features.membershipEnabled;
-
   const filteredPosts = writings.filter((post) => {
     if (activeCategory === "all") return true;
     if (activeCategory === "members") {
@@ -91,7 +88,7 @@ export default function Blog() {
       <div className="container">
         <PageHeader
           title="Blog"
-          subtitle="A publication in progress: essays, politics, books, reflections, and poetry. Later, excerpts from longer work will live here too."
+          subtitle="Essays, politics, books, reflections, and poetry, for the curious and the ones still figuring it out."
         />
 
         <Reveal className="flex flex-wrap justify-center gap-2 mb-12">
@@ -133,8 +130,14 @@ export default function Blog() {
                     {categoryLabel(post.category)}
                   </span>
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/20 text-gold text-xs">
-                    {post.isMembersOnly && <Lock className="h-3 w-3" />}
-                    {post.isMembersOnly ? "Members only" : "Public"}
+                    {post.isMembersOnly ? (
+                      <>
+                        <Lock className="h-3 w-3" />
+                        Members
+                      </>
+                    ) : (
+                      "Public"
+                    )}
                   </span>
                 </div>
                 <span className="text-muted-foreground text-sm">
@@ -155,23 +158,12 @@ export default function Blog() {
                   {post.readTime}
                 </span>
 
-                {post.isMembersOnly && !membershipEnabled ? (
-                  <span className="text-sm text-muted-foreground">
-                    Member writing opens with membership.
+                {post.isMembersOnly ? (
+                  <span className="inline-flex items-center gap-1 text-sm text-gold">
+                    <Lock className="h-3 w-3" />
+                    For members
                   </span>
-                ) : post.isMembersOnly ? (
-                  <span className="text-sm text-muted-foreground">
-                    Members only
-                  </span>
-                ) : (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-gold hover:text-gold/80"
-                  >
-                    Read more →
-                  </Button>
-                )}
+                ) : null}
               </div>
             </article>
           ))}
@@ -180,25 +172,9 @@ export default function Blog() {
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-muted-foreground">
-              {activeCategory === "members" && !membershipEnabled
-                ? "Member writing opens with membership."
-                : "No writing in this category yet."}
+              Nothing in this category yet.
             </p>
           </div>
-        )}
-
-        {!membershipEnabled && (
-          <Reveal
-            as="section"
-            className="max-w-2xl mx-auto text-center py-12 border-t border-border"
-          >
-            <h3 className="font-display text-2xl text-primary mb-4">
-              Members
-            </h3>
-            <p className="text-muted-foreground">
-              Member writing opens with membership.
-            </p>
-          </Reveal>
         )}
       </div>
     </Layout>

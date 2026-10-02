@@ -21,14 +21,14 @@ export default function Privacy() {
               Applications will collect the details you submit for programs, collaborations, and team roles.
             </p>
             <p>
-              Later, membership records and payment records will be collected so member access can be managed.
+              If you join as a member or pay for a session, a membership or payment record is kept so access and bookings can be managed.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="font-display text-2xl text-primary">Payments</h2>
             <p>
-              Card numbers are never stored on this site. When membership payments open, the payment provider handles the card. This site may keep a record that a payment was made, such as a date, a plan name, and a status.
+              Card numbers are never stored on this site. The payment provider handles the card. This site may keep a record that a payment was made, such as a date, a plan name, and a status.
             </p>
           </section>
 
