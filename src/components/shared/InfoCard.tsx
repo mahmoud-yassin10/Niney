@@ -11,6 +11,7 @@ interface InfoCardProps {
   description?: string;
   image?: string;
   href?: string;
+  linkLabel?: string;
   children?: ReactNode;
 }
 
@@ -22,6 +23,7 @@ export function InfoCard({
   description,
   image,
   href,
+  linkLabel = "Learn more",
   children,
 }: InfoCardProps) {
   const CardWrapper = href ? Link : "div";
@@ -30,7 +32,7 @@ export function InfoCard({
   return (
     <CardWrapper
       {...(wrapperProps as any)}
-      className={`group card-bordered p-6 flex flex-col gap-4 transition-all duration-300 ${
+      className={`group card-bordered p-6 flex h-full flex-col gap-4 transition-all duration-300 ${
         href ? "hover:bg-secondary cursor-pointer hover-glow" : ""
       }`}
     >
@@ -64,7 +66,7 @@ export function InfoCard({
 
       {/* Description */}
       {description && (
-        <p className="text-muted-foreground text-body-sm line-clamp-3">
+        <p className="text-muted-foreground text-body-sm">
           {description}
         </p>
       )}
@@ -75,7 +77,7 @@ export function InfoCard({
       {/* Link indicator */}
       {href && (
         <div className="flex items-center text-gold text-sm font-body mt-auto pt-2">
-          Learn more
+          {linkLabel}
           <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
         </div>
       )}

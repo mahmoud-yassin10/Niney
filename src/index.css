@@ -8,14 +8,14 @@
 @layer base {
   :root {
     /* Primary burgundy palette */
-    --burgundy-900: 345 71% 18%;
-    --burgundy-700: 345 64% 26%;
-    --burgundy-500: 345 54% 36%;
+    --burgundy-900: 345 83% 16%;
+    --burgundy-700: 344 66% 25%;
+    --burgundy-500: 344 48% 32%;
     
-    /* Off-white and warm tones */
-    --off-white: 36 33% 94%;
-    --warm-gray: 0 4% 15%;
-    --gold-accent: 40 50% 57%;
+    /* Cream, warm white, and ink */
+    --off-white: 37 51% 91%;
+    --warm-gray: 345 20% 12%;
+    --gold-accent: 41 50% 55%;
     
     /* Semantic tokens */
     --background: var(--burgundy-900);
@@ -58,12 +58,12 @@
   .light-section {
     --background: var(--off-white);
     --foreground: var(--warm-gray);
-    --card: 0 0% 100%;
+    --card: 36 56% 96%;
     --card-foreground: var(--warm-gray);
     --primary: var(--burgundy-900);
     --primary-foreground: var(--off-white);
     --muted: 36 20% 88%;
-    --muted-foreground: 0 4% 35%;
+    --muted-foreground: 345 12% 28%;
     --border: 36 20% 85%;
   }
 }
@@ -299,7 +299,10 @@
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-  .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+  .marquee-mask {
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .marquee-track { display: flex; width: max-content; animation: marquee 46s linear infinite; }
 
   /* Stagger children */
   .stagger-children > * {

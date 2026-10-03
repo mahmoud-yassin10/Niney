@@ -24,7 +24,7 @@ const tones = {
     rule: "bg-burgundy-700/50",
   },
   charcoal: {
-    section: "bg-[#141210]",
+    section: "bg-burgundy-900",
     quote: "text-off-white",
     author: "text-gold",
     note: "text-off-white/60",

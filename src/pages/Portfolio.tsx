@@ -34,9 +34,9 @@ export const projects: WorkProject[] = [
     year: "2025-Present",
     category: "Leadership & Impact",
     description:
-      "A media platform built to make more room for women and girls to tell their own stories through journalism, culture, media, creativity, and social advocacy across the Arab world.",
+      "I created Fem Plus as a space where women and girls could be more than subjects of stories. They could become the people telling them. Through journalism, culture, media, creative work, and social advocacy, Fem Plus is built around authentic female voices and the belief that representation becomes more meaningful when people have ownership over their own narratives.",
     overview:
-      "Fem Plus Magazine is a platform dedicated to empowering women through storytelling, media, and social advocacy. It provides a space for authentic female voices in the Arab world to share their stories, challenges, and triumphs.",
+      "I created Fem Plus as a space where women and girls could be more than subjects of stories. They could become the people telling them. Through journalism, culture, media, creative work, and social advocacy, Fem Plus is built around authentic female voices and the belief that representation becomes more meaningful when people have ownership over their own narratives.",
     whatIDid: [
       "Founded and launched the magazine concept and brand identity",
       "Developed editorial direction and content strategy",
@@ -52,8 +52,8 @@ export const projects: WorkProject[] = [
     year: "2025-Present",
     category: "Leadership & Impact",
     description:
-      "Global awareness and mentorship initiative for Palestinian youth. Creating sustainable support systems and educational opportunities.",
-    cardNote: "The Resilience short film lives inside this project.",
+      "I founded Resilience as a platform for storytelling, awareness, youth engagement, and mentorship centered on communities whose stories are too often reduced to headlines. The work brings together film, advocacy, education, creative storytelling, and youth-led projects.",
+    cardNote: "Includes: The Resilience, Keep Eyes on Sudan, Mentorship and Storytelling",
     overview:
       "Resilience Foundation is a global awareness and mentorship initiative focused on supporting Palestinian youth through education, creative expression, and community support.",
     whatIDid: [
@@ -88,9 +88,10 @@ export const projects: WorkProject[] = [
     year: "2025-Present",
     category: "Leadership & Impact",
     description:
-      "A youth development platform where I work across leadership, media, programs, operations, mentorship, and organizational strategy.",
+      "At Yalla Success, my role has grown across media, program development, youth engagement, operations, mentorship, and organizational leadership. I work across teams and initiatives to help turn ideas into programs, strengthen how the organization communicates, and build opportunities designed around young people rather than simply for them.",
+    cardNote: "Includes: SHE BUILDs MENA, Arab Women Hackathon, Media and Program Leadership",
     overview:
-      "My journey inside Yalla Success has grown from content and media into helping shape programs, teams, systems, and the direction of the organization. The Arab Women Hackathon sits inside this work: I led media strategy for an initiative reaching 500+ participants and mentored young women in content creation and scriptwriting.",
+      "At Yalla Success, my role has grown across media, program development, youth engagement, operations, mentorship, and organizational leadership. SHE BUILDs MENA is a multi-month entrepreneurship and leadership program I helped build and manage, from early ideas through team formation, project development, mentorship, and execution. The Arab Women Hackathon sits inside this work: I led media strategy for a large-scale hackathon with 500+ participants and mentored 35 girls in content creation, scriptwriting, and digital communication.",
     whatIDid: [
       "Developed and executed comprehensive media strategy",
       "Created content calendars and social media campaigns",
@@ -102,11 +103,11 @@ export const projects: WorkProject[] = [
   {
     id: "squash-championship",
     title: "Public Speaking & Event MCing",
-    subtitle: "Speaker | Host | MC",
+    subtitle: "Speaker | Event MC | Host | Moderator",
     year: "2025",
     category: "Public Speaking & Hosting",
     description:
-      "Hosting, moderation, and public speaking, including the Squash National Championship in Port Said.",
+      "I am most comfortable where ideas have to leave the page and enter a room. My speaking work spans event MCing, public speaking, moderation, hosting, audience engagement, interviews, and live communication across youth, academic, community, and sporting spaces, including the Squash National Championship in Port Said.",
     overview:
       "Hosted the prestigious Squash National Championship in Port Said, providing professional live commentary and engaging audiences throughout the multi-day event.",
     whatIDid: [
@@ -228,11 +229,13 @@ export const projects: WorkProject[] = [
   {
     id: "tomorrows-leaders",
     title: "Tomorrow’s Leaders",
-    subtitle: "Cohort Representative",
+    subtitle: "Cohort Representative | Tomorrow’s Leaders Scholar",
     year: "Present",
     category: "Leadership & Impact",
-    description: "Cohort representative in the Tomorrow’s Leaders program at The American University in Cairo.",
-    overview: "Tomorrow’s Leaders Scholar and cohort representative at The American University in Cairo.",
+    description:
+      "Representing my cohort within the Tomorrow’s Leaders program, gathering student concerns, communicating across the cohort and program team, and helping turn recurring student needs into organized feedback, follow-up, and action.",
+    overview:
+      "Representing my cohort within the Tomorrow’s Leaders program at The American University in Cairo, gathering student concerns, communicating across the cohort and program team, and helping turn recurring student needs into organized feedback, follow-up, and action.",
   },
   {
     id: "fincon",
@@ -240,8 +243,10 @@ export const projects: WorkProject[] = [
     subtitle: "Marketing Head",
     year: "Present",
     category: "Leadership & Impact",
-    description: "Marketing leadership for FINCON.",
-    overview: "Marketing Head at FINCON, across campaign and communications work.",
+    description:
+      "Leading marketing strategy and creative direction for FINCON at AUC, from campaign concepts and recruitment storytelling to digital content, launch strategy, team coordination, and the way the club presents itself online and on campus.",
+    overview:
+      "Leading marketing strategy and creative direction for FINCON at AUC, from campaign concepts and recruitment storytelling to digital content, launch strategy, team coordination, and the way the club presents itself online and on campus.",
   },
   {
     id: "yyas",
@@ -296,7 +301,7 @@ export default function Portfolio() {
       <div className="container">
         <PageHeader
           title="Work"
-          subtitle="Some of the things I have built, led, researched, filmed, written, hosted, and helped bring into the world."
+          subtitle="A growing archive of what I have built, led, researched, written, filmed, hosted, and helped bring into the world."
         />
 
         <Reveal className="flex flex-wrap justify-center gap-2 mb-12">
@@ -315,23 +320,44 @@ export default function Portfolio() {
           ))}
         </Reveal>
 
-        <Reveal variant="stagger" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
-          {filteredProjects.map((project) => (
-            <InfoCard
-              key={project.id}
-              title={project.title}
-              subtitle={project.subtitle}
-              year={project.year}
-              category={project.category}
-              description={project.description}
-              href={`/work/${project.id}`}
-            >
-              {project.cardNote ? (
-                <p className="text-gold text-body-sm">{project.cardNote}</p>
-              ) : null}
-            </InfoCard>
-          ))}
-        </Reveal>
+        {(() => {
+          const featuredIds = ["yalla-success", "resilience-foundation", "fem-plus", "fincon"];
+          const portfolioIds = ["tomorrows-leaders", "squash-championship", "lumiere-research", "acting-portfolio", "voiceover-work"];
+          const present = new Set(filteredProjects.map((project) => project.id));
+          const shown = filteredProjects.filter((project) => !(project.parentId && present.has(project.parentId)));
+          const groups = [
+            { id: "featured", label: "Flagship", items: shown.filter((project) => featuredIds.includes(project.id)) },
+            { id: "portfolio", label: "Selected", items: shown.filter((project) => portfolioIds.includes(project.id)) },
+            {
+              id: "archive",
+              label: "Archive",
+              items: shown.filter((project) => !featuredIds.includes(project.id) && !portfolioIds.includes(project.id)),
+            },
+          ];
+          return groups.map((group) =>
+            group.items.length === 0 ? null : (
+              <section key={group.id} className="pb-16">
+                <p className="mb-6 font-sans text-xs uppercase tracking-[0.28em] text-gold">{group.label}</p>
+                <Reveal variant="stagger" className={group.id === "archive" ? "grid gap-4 md:grid-cols-2" : "grid items-stretch gap-6 md:grid-cols-2"}>
+                  {group.items.map((project) => (
+                    <InfoCard
+                      key={project.id}
+                      title={project.title}
+                      subtitle={project.subtitle}
+                      year={project.year}
+                      category={project.category}
+                      description={group.id === "archive" ? undefined : project.description}
+                      href={`/work/${project.id}`}
+                      linkLabel={group.id === "featured" ? "Explore Project" : "Learn more"}
+                    >
+                      {project.cardNote ? <p className="text-gold text-body-sm">{project.cardNote}</p> : null}
+                    </InfoCard>
+                  ))}
+                </Reveal>
+              </section>
+            ),
+          );
+        })()}
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">

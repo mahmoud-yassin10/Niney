@@ -1,39 +1,53 @@
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Landmark, Clapperboard, Mic, Users } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { QuoteInterlude } from "@/components/shared/QuoteInterlude";
 
 const practices = [
   {
     number: "01",
+    icon: Landmark,
     title: "Politics, Journalism & Research",
     description:
       "I explore how policy, power, media, and public narratives shape the way people understand the world. My work spans political communication, international affairs, journalism, interviewing, research, and the intersection between diplomacy and media.",
-    hover: "Policy · Interviews · Diplomacy · Research",
+    hover: ["Policy", "Diplomacy", "Interviews", "Research"],
   },
   {
     number: "02",
+    icon: Clapperboard,
     title: "Media, Marketing, Filmmaking & Storytelling",
     description:
       "From campaigns and content strategy to filmmaking, directing, writing, and digital storytelling, I build narratives designed to make people stop, feel, remember, and act.",
-    hover: "Campaigns · Film · Direction · Strategy · Content · Creative",
+    hover: ["Campaigns", "Film", "Direction", "Strategy", "Content"],
   },
   {
     number: "03",
+    icon: Mic,
     title: "Public Speaking, Event MCing & Communication",
     description:
       "Public speaker, event MC, moderator, host, and voice artist. I work both on stage and on camera, turning ideas into conversations audiences can connect with and remember.",
-    hover: "Stage · Moderation · Hosting · Voice · Interviews · On Camera",
+    hover: ["Stage", "Hosting", "Moderation", "Voice", "Interviews"],
   },
   {
     number: "04",
+    icon: Users,
     title: "Leadership, Projects & Youth Impact",
     description:
       "I build spaces where young people can speak, create, lead, and access opportunities. Through initiatives, mentorship, community-building, and youth programs, I care about turning potential into something visible.",
-    hover: "Mentorship · Programs · Community · Youth",
+    hover: ["Programs", "Teams", "Mentorship", "Community", "Strategy"],
   },
+];
+
+const ticker = [
+  "Creative Direction",
+  "Acting",
+  "Theatre",
+  "Voiceover",
+  "Filmmaking",
+  "Writing",
+  "Screenwriting",
 ];
 
 const featuredWork = [
@@ -43,8 +57,14 @@ const featuredWork = [
     title: "Yalla Success",
     role: "Deputy CEO",
     description:
-      "A youth-focused platform built around opportunity, development, and access. My work includes leadership, media strategy, communications, youth engagement, and helping shape how the initiative grows and reaches its community.",
-    tone: "bg-[#141210] text-off-white",
+      "At Yalla Success, my role has grown across media, program development, youth engagement, operations, mentorship, and organizational leadership. I work across teams and initiatives to help turn ideas into programs, strengthen how the organization communicates, and build opportunities designed around young people rather than simply for them.",
+    inside: [
+      { name: "SHE BUILDs MENA", role: "Programme Manager", note: "A multi-month entrepreneurship and leadership program I helped build and manage, from early ideas through team formation, project development, mentorship, and execution." },
+      { name: "Arab Women Hackathon", role: "Media Strategy", note: "Led media strategy for a large-scale hackathon with 500+ participants and mentored 35 girls in content creation, scriptwriting, and digital communication." },
+    ],
+    images: ["/editorial/newspaper.jpg", "/editorial/desk.jpg", "/editorial/spines.jpg"],
+    flip: false,
+    tone: "bg-[#FBF7F1] text-burgundy-900",
   },
   {
     id: "resilience-foundation",
@@ -52,18 +72,26 @@ const featuredWork = [
     title: "Resilience Foundation",
     role: "Founder",
     description:
-      "An initiative centered on Palestinian youth, storytelling, awareness, mentorship, and creating spaces where voices too often reduced to headlines can be heard as people.",
-    inside: "The Resilience short film · Youth mentorship · Storytelling and awareness · Future educational and advocacy work",
-    tone: "light-section bg-off-white text-burgundy-900",
+      "I founded Resilience as a platform for storytelling, awareness, youth engagement, and mentorship centered on communities whose stories are too often reduced to headlines. The work brings together film, advocacy, education, creative storytelling, and youth-led projects designed to return individuality and humanity to conversations that can easily become abstract.",
+    inside: [
+      { name: "The Resilience", role: "Writer, Director, Actor", note: "An original short film I wrote, directed, and performed in." },
+      { name: "Keep Eyes on Sudan", role: "Storytelling", note: "Awareness work held inside the foundation, beside mentorship and youth storytelling." },
+    ],
+    images: ["/editorial/politics-board.jpg", "/editorial/book-ribbon.jpg", "/editorial/vinyl.jpg"],
+    flip: true,
+    tone: "bg-burgundy-900 text-off-white",
   },
   {
     id: "fem-plus",
     number: "03",
     title: "Fem Plus Magazine",
-    role: "Founder",
+    role: "Founder & Editor-in-Chief",
     description:
-      "A media platform created to make room for women and girls to tell their own stories. Fem Plus brings together journalism, storytelling, social advocacy, creativity, and authentic female voices across the Arab world.",
-    tone: "bg-burgundy-700 text-off-white",
+      "I created Fem Plus as a space where women and girls could be more than subjects of stories. They could become the people telling them. Through journalism, culture, media, creative work, and social advocacy, Fem Plus is built around authentic female voices and the belief that representation becomes more meaningful when people have ownership over their own narratives.",
+    inside: [],
+    images: ["/editorial/vogue.jpg", "/editorial/book-ribbon.jpg", "/editorial/desk.jpg"],
+    flip: false,
+    tone: "bg-[#FBF7F1] text-burgundy-900",
   },
 ];
 
@@ -91,21 +119,15 @@ export default function Index() {
             Politics gives me the questions. Journalism teaches me to ask them. Media gives them reach. Storytelling gives them meaning. Leadership gives me a reason to use all of it.
           </p>
           <p className="mt-6 font-display text-2xl text-burgundy-900">That is what connects the work.</p>
+          <p className="mt-12 font-display text-3xl leading-snug text-burgundy-900 md:text-4xl">
+            “I do not want a life that fits neatly into one title.”
+          </p>
+          <p className="mt-4 font-sans text-xs uppercase tracking-[0.28em] text-burgundy-700">Niney Yassin</p>
         </Reveal>
       </section>
 
-      <QuoteInterlude
-        tone="burgundy"
-        quote="I do not want a life that fits neatly into one title."
-        author="Niney Yassin"
-        note="And I am beginning to think that may be the point."
-      />
-
-      <section className="relative overflow-hidden bg-burgundy-700 py-20 md:py-28">
-        <p className="pointer-events-none absolute -left-4 top-8 font-display text-8xl text-off-white/5 md:text-[10rem]">
-          WORK
-        </p>
-        <div className="container relative">
+      <section className="bg-burgundy-900 py-20 md:py-28">
+        <div className="container">
           <Reveal>
             <p className="font-sans text-xs uppercase tracking-[0.28em] text-gold">Practice</p>
             <h2 className="mt-3 font-display text-4xl text-primary md:text-5xl">What I Do</h2>
@@ -116,79 +138,84 @@ export default function Index() {
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {practices.map((item) => (
               <Reveal key={item.number}>
-                <article className="group relative overflow-hidden border border-off-white/15 p-8 transition-transform duration-500 hover:-translate-y-1">
-                  <span className="pointer-events-none absolute -right-2 -top-6 font-display text-8xl text-off-white/10">
-                    {item.number}
-                  </span>
+                <article className="group border border-off-white/15 bg-burgundy-900 p-8 shadow-none transition-all duration-300 hover:-translate-y-2 hover:border-gold/70 hover:bg-burgundy-700 hover:shadow-[0_16px_40px_rgba(36,24,27,0.28)]">
+                  <item.icon className="mb-5 h-6 w-6 text-gold transition-transform duration-300 group-hover:-translate-y-0.5" strokeWidth={1.5} />
                   <p className="font-sans text-xs tracking-[0.25em] text-gold">{item.number}</p>
                   <h3 className="mt-3 font-display text-2xl text-primary">{item.title}</h3>
-                  <p className="mt-4 text-body-sm text-primary/75">{item.description}</p>
-                  <p className="mt-5 font-sans text-[11px] uppercase tracking-[0.16em] text-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    {item.hover}
+                  <p className="mt-4 text-body-sm text-primary/80">{item.description}</p>
+                  <p className="mt-5 flex max-h-0 flex-wrap gap-x-4 overflow-hidden font-sans text-[11px] uppercase tracking-[0.18em] text-gold opacity-0 transition-all duration-300 group-hover:max-h-8 group-hover:opacity-100">
+                    {item.hover.map((word) => (
+                      <span key={word}>{word}</span>
+                    ))}
                   </p>
                 </article>
               </Reveal>
             ))}
           </div>
-          <div className="mt-12 overflow-hidden border-y border-off-white/15 py-4" aria-label="Acting, Theatre, Voiceover, Filmmaking, Writing, Creative Direction">
-            <div className="marquee-track font-display text-2xl text-gold/80 md:text-3xl" aria-hidden="true">
-              {[0, 1].map((copy) => (
-                <span key={copy} className="flex shrink-0 gap-10 pr-10">
-                  {["Acting", "Theatre", "Voiceover", "Filmmaking", "Writing", "Creative Direction"].map((word) => (
-                    <span key={word} className="whitespace-nowrap">
-                      {word} <span className="text-off-white/30">•</span>
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </div>
+        </div>
+        <div className="marquee-mask mt-14 overflow-hidden border-y border-off-white/15 py-5" aria-label={ticker.join(", ")}>
+          <div className="marquee-track font-display text-2xl text-gold md:text-3xl" aria-hidden="true">
+            {[0, 1].map((copy) => (
+              <span key={copy} className="flex shrink-0">
+                {ticker.map((word) => (
+                  <span key={`${copy}-${word}`} className="px-10 whitespace-nowrap">
+                    {word}
+                  </span>
+                ))}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      <QuoteInterlude tone="cream" quote="It’s already yours." author="The universe" />
-
-      <section className="bg-[#101010] py-20 md:py-28">
+      <section className="light-section bg-off-white py-20 md:py-28">
         <div className="container">
           <Reveal>
-            <p className="font-sans text-xs uppercase tracking-[0.28em] text-gold">Selected works</p>
-            <h2 className="mt-3 font-display text-4xl text-off-white md:text-5xl">Featured Work</h2>
-            <p className="mt-4 max-w-2xl text-body-lg text-off-white/70">
-              Selected projects that began as ideas and became communities, platforms, stories, and spaces for other people to grow.
+            <p className="font-sans text-xs uppercase tracking-[0.28em] text-gold">Selected Work</p>
+            <h2 className="mt-3 font-display text-4xl text-burgundy-900 md:text-5xl">Featured Work</h2>
+            <p className="mt-4 max-w-2xl text-body-lg text-warm-gray/80">
+              Selected work from the projects, platforms, and communities I have helped build, lead, and shape.
             </p>
           </Reveal>
-          <div className="mt-12 space-y-6">
+          <div className="mt-14 space-y-8">
             {featuredWork.map((project) => (
               <Reveal key={project.id}>
-                <Link
-                  to={`/work/${project.id}`}
-                  className={`group grid gap-6 p-8 md:grid-cols-[auto_1fr_auto] md:items-end md:p-12 ${project.tone}`}
-                >
-                  <p className="font-display text-5xl opacity-40">{project.number}</p>
-                  <div>
-                    <h3 className="font-display text-3xl md:text-5xl">{project.title}</h3>
-                    <p className="mt-2 font-sans text-xs uppercase tracking-[0.22em] opacity-70">{project.role}</p>
-                    <p className="mt-4 max-w-2xl text-body-sm opacity-80">{project.description}</p>
-                    {project.inside ? (
-                      <p className="mt-3 text-body-sm opacity-70">Inside the project: {project.inside}</p>
+                <article className={`grid items-center gap-8 p-6 md:p-10 lg:grid-cols-2 lg:gap-12 ${project.tone}`}>
+                  <div className={project.flip ? "lg:order-2" : ""}>
+                    <p className="font-sans text-xs tracking-[0.25em] text-gold">{project.number}</p>
+                    <h3 className="mt-3 font-display text-4xl md:text-5xl">{project.title}</h3>
+                    <p className="mt-2 font-body text-lg text-gold">{project.role}</p>
+                    <p className="mt-5 text-body-md opacity-90">{project.description}</p>
+                    {project.inside.length > 0 ? (
+                      <div className="mt-6 space-y-4">
+                        <p className="font-sans text-[11px] uppercase tracking-[0.2em] opacity-70">Selected work within</p>
+                        {project.inside.map((item) => (
+                          <div key={item.name}>
+                            <p className="font-display text-xl">{item.name}</p>
+                            <p className="text-sm text-gold">{item.role}</p>
+                            <p className="mt-1 text-body-sm opacity-80">{item.note}</p>
+                          </div>
+                        ))}
+                      </div>
                     ) : null}
+                    <Link to={`/work/${project.id}`} className="mt-6 inline-flex items-center font-body text-gold hover:underline">
+                      View Case Study
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </div>
-                  <span className="inline-flex items-center font-sans text-xs uppercase tracking-[0.2em]">
-                    View Case Study
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </Link>
+                  <div className={`grid grid-cols-2 gap-3 ${project.flip ? "lg:order-1" : ""}`}>
+                    <img src={project.images[0]} alt="" className="col-span-2 aspect-[16/10] w-full object-cover" loading="lazy" />
+                    <img src={project.images[1]} alt="" className="aspect-square w-full object-cover" loading="lazy" />
+                    <img src={project.images[2]} alt="" className="aspect-square w-full object-cover" loading="lazy" />
+                  </div>
+                </article>
               </Reveal>
             ))}
           </div>
-          <Reveal className="mt-10">
-            <Link to="/work" className="inline-flex items-center text-gold hover:underline">
-              View all work
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Reveal>
         </div>
       </section>
+
+      <QuoteInterlude tone="burgundy" quote="It’s already yours." author="The universe" />
 
       <section className="light-section bg-off-white py-24">
         <Reveal className="container text-center">
@@ -218,18 +245,18 @@ export default function Index() {
         quote={["do it tired.", "do it afraid.", "just don’t stop."]}
       />
 
-      <section className="bg-burgundy-900 py-24 md:py-32">
+      <section className="light-section bg-off-white py-24 md:py-32">
         <Reveal className="container max-w-3xl">
-          <h2 className="font-display text-4xl text-primary md:text-6xl">
+          <h2 className="font-display text-4xl text-burgundy-900 md:text-6xl">
             Your idea deserves more than staying an idea.
           </h2>
-          <div className="mt-8 space-y-2 text-body-lg text-primary/80">
+          <div className="mt-8 space-y-2 text-body-lg text-warm-gray/80">
             <p>Maybe it is a story you have been afraid to tell.</p>
             <p>A project you keep postponing.</p>
             <p>A message you know could reach further.</p>
             <p>A room you are finally ready to walk into.</p>
           </div>
-          <p className="mt-8 text-body-md text-primary/80">
+          <p className="mt-8 text-body-md text-warm-gray/80">
             If you are ready to build it, say it, film it, research it, launch it, or give it a voice, this might be where we begin.
           </p>
           <Link
@@ -239,8 +266,8 @@ export default function Index() {
             Let’s Build Something
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
-          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Speaking · Media · Strategy · Research · Storytelling · Collaboration
+          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.22em] text-burgundy-700">
+            Speaking&nbsp;&nbsp;&nbsp;Media&nbsp;&nbsp;&nbsp;Strategy&nbsp;&nbsp;&nbsp;Research&nbsp;&nbsp;&nbsp;Storytelling&nbsp;&nbsp;&nbsp;Collaboration
           </p>
         </Reveal>
       </section>
